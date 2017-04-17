@@ -1,28 +1,10 @@
-import {combineReducers, createStore} from 'redux';
-import players from './players'
+import {combineReducers, createStore, applyMiddleware} from 'redux';
+import logger from 'redux-logger'
 
-const initialState = {
-  players: players.map((p, id) => {
-    p.votes   = 0;
-    p.unrated = players.map((_, id) => {
-      return id
-    });
-    return p
-  })
-}
-
-function people(state = initialState, action) {
-  switch(action.type) {
-    case 'people:choose':
-      console.log('person chosen', action.winner, action.loser)
-      return state;
-    default:
-      return state;
-  }
-}
+import people from './store/people'
 
 const reducers = combineReducers({
   people,
 })
 
-export default createStore(reducers)
+export default createStore(reducers, applyMiddleware(logger))
