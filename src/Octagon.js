@@ -4,15 +4,23 @@ import {connect} from 'react-redux'
 class Octagon extends Component {
   render() {
     return (
-      <div className="octagon">
-        <div className="blue corner" onClick={() => this.props.choose(this.props.blue.id, this.props.red.id)}>
-          <img src="https://placehold.it/420x420" alt="Neil Sarkar on LinkedIn" />
-          {this.props.blue.name}
-        </div>
-        <div className="red corner" onClick={() =>  this.props.choose(this.props.red.id, this.props.blue.id)}>
-          <img src="https://placehold.it/420x420" alt="Santi Garza on LinkedIn" />
-          {this.props.red.name}
-        </div>
+      <div className="octagonCntr">
+        { this.props.red ?
+          <div className="octagon">
+            <div className="blue corner" onClick={() => this.props.choose(this.props.blue.id, this.props.red.id)}>
+              <img src="https://placehold.it/420x420" alt="Neil Sarkar on LinkedIn" />
+              {this.props.blue.name}
+            </div>
+            <div className="red corner" onClick={() =>  this.props.choose(this.props.red.id, this.props.blue.id)}>
+              <img src="https://placehold.it/420x420" alt="Santi Garza on LinkedIn" />
+              {this.props.red.name}
+            </div>
+          </div>
+        :
+          <div>
+            Ya done.
+          </div>
+        }
       </div>
     );
   }
@@ -32,8 +40,8 @@ function mapDispatchToProps(dispatch) {
 
 function mapStateToProps(state) {
   return {
-    red:    state.people.red || 'nope',
-    blue:   state.people.blue || 'nope',
+    red:    state.people.red,
+    blue:   state.people.blue,
   }
 }
 
