@@ -2,30 +2,39 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux'
 
 class Octagon extends Component {
-  choose(winner, loser) {
-    console.log(winner, loser)
-  }
-
   render() {
     return (
       <div className="octagon">
-        <div className="blue corner" onClick={() => this.choose(0, 1)}>
+        <div className="blue corner" onClick={() => this.props.choose(this.props.blue.id, this.props.red.id)}>
           <img src="https://placehold.it/420x420" alt="Neil Sarkar on LinkedIn" />
-          Neil Sarkar
+          {this.props.blue.name}
         </div>
-        <div className="red corner" onClick={() =>  this.choose(1, 0)}>
+        <div className="red corner" onClick={() =>  this.props.choose(this.props.red.id, this.props.blue.id)}>
           <img src="https://placehold.it/420x420" alt="Santi Garza on LinkedIn" />
-          Santi Garza
+          {this.props.red.name}
         </div>
       </div>
     );
   }
 }
 
-function mapStateToProps(state) {
+function mapDispatchToProps(dispatch) {
   return {
-    people: state.people
+    choose: function(winner, loser) {
+      dispatch({
+        type: 'people:choose',
+        winner: winner,
+        loser: loser,
+      })
+    }
   }
 }
 
-export default connect(mapStateToProps)(Octagon);
+function mapStateToProps(state) {
+  return {
+    red:    state.people.red || 'nope',
+    blue:   state.people.blue || 'nope',
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Octagon);

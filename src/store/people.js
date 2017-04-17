@@ -13,9 +13,20 @@ const initialState = {
 export default function people(state = initialState, action) {
   switch(action.type) {
     case 'people:choose':
-      console.log('person chosen', action.winner, action.loser)
-      return state;
+      const nextMatchup = matchup(state.players)
+      return {
+        ...state,
+        red:  nextMatchup.red,
+        blue: nextMatchup.blue,
+      }
     default:
       return state;
+  }
+}
+
+function matchup(players) {
+  return {
+    red:  players[Math.floor(Math.random()*players.length)],
+    blue: players[Math.floor(Math.random()*players.length)],
   }
 }
