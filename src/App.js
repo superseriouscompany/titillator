@@ -1,19 +1,29 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import {createStore} from 'redux';
+
+function rankings(state = {}, action) {
+  switch(action.type) {
+    case 'cool':
+      console.log('nice')
+      return state;
+    default:
+      return state;
+  }
+}
+
+const store = createStore(rankings)
 
 class App extends Component {
+  rate() {
+    store.dispatch({
+      type: 'cool'
+    })
+  }
+
   render() {
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Lawng</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
+      <a onClick={this.rate}>Rate Bish</a>
     );
   }
 }
