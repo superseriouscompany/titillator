@@ -11,7 +11,16 @@ class App extends Component {
 
   render() {
     return (
-      <a onClick={this.rate}>Rate Bish</a>
+      <div className="octagon">
+        <div className="blue corner">
+          <img src="https://placehold.it/420x420" alt="Neil Sarkar's LinkedIn Profile Picture"/>
+          Neil Sarkar
+        </div>
+        <div className="red corner">
+          <img src="https://placehold.it/420x420" alt="Santi Garza's LinkedIn Profile Picture"/>
+          Santi Garza
+        </div>
+      </div>
     );
   }
 }

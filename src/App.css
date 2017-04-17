@@ -1,1 +1,11 @@
 a { cursor: pointer; }
+
+.octagon {
+  display: flex;
+  padding: 1em;
+}
+
+.corner {
+  flex: 1;
+  text-align: center;
+}
