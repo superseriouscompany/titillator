@@ -1,18 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import {createStore} from 'redux';
-
-function rankings(state = {}, action) {
-  switch(action.type) {
-    case 'cool':
-      console.log('nice')
-      return state;
-    default:
-      return state;
-  }
-}
-
-const store = createStore(rankings)
+import store from './store'
 
 class App extends Component {
   rate() {
