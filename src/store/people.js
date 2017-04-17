@@ -1,11 +1,12 @@
 import players from '../players'
 
 const initialState = {
-  players: players.map((p, id) => {
-    p.id      = id;
+  players: players.map((p) => {
     p.votes   = 0;
-    p.unrated = players.map((_, id) => {
-      return id
+    p.unrated = players.filter((p0) => {
+      return p0.id !== p.id
+    }).map((p0) => {
+      return p0.id
     });
     return p
   }),
@@ -14,6 +15,8 @@ const initialState = {
 const nextMatchup = matchup(initialState.players)
 initialState.red  = nextMatchup.red
 initialState.blue = nextMatchup.blue
+
+console.log(initialState)
 
 export default function people(state = initialState, action) {
   switch(action.type) {
@@ -45,10 +48,10 @@ function matchup(players) {
   }
 
   const red = peopleLeft[Math.floor(Math.random()*peopleLeft.length)]
-
+  const blueId = red.unrated[Math.floor(Math.random()*red.unrated.length)]
   return {
     red:  red,
-    blue: players[red.unrated[Math.floor(Math.random()*red.unrated.length)]],
+    blue: players[blueId],
   }
 }
 

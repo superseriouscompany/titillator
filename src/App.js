@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-import './App.css';
 import {Provider} from 'react-redux'
-import Octagon from './Octagon'
+import './App.css';
+import Stage from './components/Stage'
 import store from './store'
 
 class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <Octagon />
+        <Stage />
       </Provider>
     );
   }
