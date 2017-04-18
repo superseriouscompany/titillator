@@ -9,7 +9,10 @@ class Stage extends Component {
       { this.props.isDone ?
         <Results />
       :
-        <Octagon />
+        <div>
+          <Octagon />
+          <Results />
+        </div>
       }
     </div>
   )}
