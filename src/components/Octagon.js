@@ -41,14 +41,12 @@ class Octagon extends Component {
               <img src={this.props.blue.avatar_url} alt={`%{this.props.blue.name} on LinkedIn`} className="face"/>
               <div>
                 <div>{this.props.blue.name}</div>
-                {this.props.blue.wins.length} - {this.props.blue.losses.length}
               </div>
             </div>
             <div className="red corner" onClick={() =>  this.choose(this.props.red.id, this.props.blue.id)}>
               <img src={this.props.red.avatar_url} alt={`%{this.props.red.name} on LinkedIn`} className="face"/>
               <div>
                 <div>{this.props.red.name}</div>
-                {this.props.red.wins.length} - {this.props.red.losses.length}
               </div>
             </div>
           </div>

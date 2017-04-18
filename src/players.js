@@ -261,4 +261,4 @@ const men = people.filter((p) => {
   return p.gender === 'M'
 })
 
-export default women.slice(10, 20)
+export default women
