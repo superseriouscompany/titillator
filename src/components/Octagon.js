@@ -2,6 +2,28 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux'
 
 class Octagon extends Component {
+  constructor(props) {
+    super(props)
+    this.keydown = this.keydown.bind(this)
+  }
+
+  keydown(e) {
+    // TODO: make it work cross browser
+    if( e.key === 'ArrowLeft' ) {
+      this.props.choose(this.props.blue.id, this.props.red.id)
+    } else if( e.key === 'ArrowRight' ) {
+      this.props.choose(this.props.red.id, this.props.blue.id)
+    }
+  }
+
+  componentDidMount() {
+    document.addEventListener('keydown', this.keydown)
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('keydown', this.keydown)
+  }
+
   render() {
     return (
       <div className="octagon">

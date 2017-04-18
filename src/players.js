@@ -41,7 +41,7 @@ const csv = [
   "Shiv Patel,M,https://media.licdn.com/mpr/mpr/shrink_100_100/p/8/005/097/076/2fa3092.jpg",
   "Ada Fee,F,https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/1/000/0ea/147/2f3617d.jpg",
   "Devin Thomson,M,https://media.licdn.com/mpr/mpr/shrink_100_100/AAEAAQAAAAAAAAggAAAAJDExNDk5YjdlLTBlYzctNDVlYS1iYzU0LTI4NTVlZDMwOTMxNw.jpg",
-  "Nicole Lee,F,https://media.licdn.com/mpr/mpr/shrink_100_100/AAEAAQAAAAAAAAnpAAAAJDQ2ZDMwYmEzLTMxYjUtNGMyMC1hNTg1LTcyNWM4MDVkYzI3NA.jpg",
+  // "Nicole Lee,F,https://media.licdn.com/mpr/mpr/shrink_100_100/AAEAAQAAAAAAAAnpAAAAJDQ2ZDMwYmEzLTMxYjUtNGMyMC1hNTg1LTcyNWM4MDVkYzI3NA.jpg",
   "Victor Colomes,M,https://media.licdn.com/mpr/mpr/shrink_100_100/AAEAAQAAAAAAAALuAAAAJDkwN2Y2ZGM0LWIyMGUtNGIzNS05MDE1LWZiOTRiYzNlNjAyNQ.jpg",
   "Alex Salvatore,F,https://media.licdn.com/mpr/mpr/shrink_100_100/AAEAAQAAAAAAAAjzAAAAJDYzYTFkYmVkLTc5YjUtNDE2MC04ZDhjLTI1YmI5NmQ5NGVlZA.jpg",
   "Eric Lesh,M,",
