@@ -7,7 +7,7 @@ class Result extends Component {
       Results!
       { this.props.players.map((p, key) => (
         <div key={key}>
-          {p.name} ({p.votes})
+          {p.wins.length} - {p.losses.length} {p.name}
         </div>
       ))}
     </div>

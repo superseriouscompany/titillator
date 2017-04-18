@@ -8,10 +8,7 @@ const initialState = {
 
 export default function people(state = initialState, action) {
   switch(action.type) {
-    case 'cool:nice':
-      return state
     case 'matchup:next':
-      console.log(state.players.map(p => p.name))
       const nextMatchup = matchup(state.players)
       return {
         ...state,
@@ -28,29 +25,48 @@ export default function people(state = initialState, action) {
   }
 }
 
+let round = 0;
 let index = 0;
+let ladder = [].concat(players)
 function matchup(players) {
-  if( index + 1 >= players.length ) {
-    return {
-      red:  null,
-      blue: null,
-      done: true,
-    }
+  if( index + 1 >= ladder.length ) {
+    ladder = arrangeLadder(ladder, round)
+    round++;
+    console.log('Starting round', round);
+    index = 0;
   }
 
   const people = {
-    blue:  players[index],
-    red: players[index+1],
+    blue:  ladder[index],
+    red:   ladder[index+1],
+    round: round,
   }
   index += 2;
+
   return people
+}
+
+function arrangeLadder(ladder, round) {
+  let tiers = [];
+  for( var i  = 0; i < round + 2; i++ ) {
+    tiers.push([])
+  }
+  ladder.forEach((p) => {
+    tiers[p.wins.length].push(p)
+  })
+
+  tiers = tiers.reverse()
+  tiers.forEach((t) => {
+    shuffle(t)
+  })
+  return [].concat.apply([], tiers)
 }
 
 function choose(players, winner, loser) {
   return players.map((p) => {
     if( p.id === winner ) {
       p.wins.push(loser)
-      p.votes++;
+      p.votes++
     } else if( p.id === loser ) {
       p.losses.push(winner)
     }
