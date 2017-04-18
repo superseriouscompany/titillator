@@ -51,7 +51,7 @@ function matchup(players) {
   const blueId = red.unrated[Math.floor(Math.random()*red.unrated.length)]
   return {
     red:  red,
-    blue: players[blueId],
+    blue: players.find((p) => { return p.id === blueId}),
   }
 }
 
