@@ -1,3 +1,18 @@
+# Titillator
+
+## Requirements
+
+1. node 4+
+
+
+## Setup
+
+    $ npm install
+
+## Deploying
+
+    $ npm run deploy
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>

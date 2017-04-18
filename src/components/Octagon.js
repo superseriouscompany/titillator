@@ -6,11 +6,11 @@ class Octagon extends Component {
     return (
       <div className="octagon">
         <div className="blue corner" onClick={() => this.props.choose(this.props.blue.id, this.props.red.id)}>
-          <img src={this.props.blue.avatar_url} alt={`%{this.props.blue.name} on LinkedIn`} />
+          <img src={this.props.blue.avatar_url} alt={`%{this.props.blue.name} on LinkedIn`} className="face"/>
           {this.props.blue.name}
         </div>
         <div className="red corner" onClick={() =>  this.props.choose(this.props.red.id, this.props.blue.id)}>
-          <img src={this.props.red.avatar_url} alt={`%{this.props.red.name} on LinkedIn`} />
+          <img src={this.props.red.avatar_url} alt={`%{this.props.red.name} on LinkedIn`} className="face"/>
           {this.props.red.name}
         </div>
       </div>
