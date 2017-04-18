@@ -16,7 +16,7 @@ class Result extends Component {
 
 function mapStateToProps(state) {
   return {
-    players: (state.people.players || []).sort((a, b) => {
+    players: [].concat(state.people.players).sort((a, b) => {
       return a.votes < b.votes ? 1 : -1
     })
   }

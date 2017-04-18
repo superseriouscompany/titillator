@@ -1,73 +1,79 @@
 import players from '../players'
 
+shuffle(players)
+
 const initialState = {
-  players: players.map((p) => {
-    p.votes   = 0;
-    p.unrated = players.filter((p0) => {
-      return p0.id !== p.id
-    }).map((p0) => {
-      return p0.id
-    });
-    return p
-  }),
+  players: players,
 }
-
-const nextMatchup = matchup(initialState.players)
-initialState.red  = nextMatchup.red
-initialState.blue = nextMatchup.blue
-
-console.log(initialState)
 
 export default function people(state = initialState, action) {
   switch(action.type) {
+    case 'cool:nice':
+      return state
+    case 'matchup:next':
+      console.log(state.players.map(p => p.name))
+      const nextMatchup = matchup(state.players)
+      return {
+        ...state,
+        ...nextMatchup,
+      }
     case 'people:choose':
       const players = choose(state.players, action.winner, action.loser)
-      const nextMatchup = matchup(players)
       return {
         ...state,
         players: players,
-        red:     nextMatchup.red,
-        blue:    nextMatchup.blue,
       }
     default:
       return state;
   }
 }
 
+let index = 0;
 function matchup(players) {
-  const peopleLeft = players.filter((p) => {
-    return p.unrated.length
-  })
-
-  if( !peopleLeft.length ) {
+  if( index + 1 >= players.length ) {
     return {
-      red: null,
+      red:  null,
       blue: null,
       done: true,
     }
   }
 
-  const red = peopleLeft[Math.floor(Math.random()*peopleLeft.length)]
-  const blueId = red.unrated[Math.floor(Math.random()*red.unrated.length)]
-  return {
-    red:  red,
-    blue: players.find((p) => { return p.id === blueId}),
+  const people = {
+    blue:  players[index],
+    red: players[index+1],
   }
+  index += 2;
+  return people
 }
 
 function choose(players, winner, loser) {
   return players.map((p) => {
     if( p.id === winner ) {
+      p.wins.push(loser)
       p.votes++;
-      p.unrated = p.unrated.filter((id) => {
-        return id !== loser
-      })
     } else if( p.id === loser ) {
-      p.unrated = p.unrated.filter((id) => {
-        return id !== winner
-      })
+      p.losses.push(winner)
     }
 
     return p
   })
+}
+
+function shuffle(array) {
+  var currentIndex = array.length, temporaryValue, randomIndex;
+
+  // While there remain elements to shuffle...
+  while (0 !== currentIndex) {
+
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+
+    // And swap it with the current element.
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
+
+  return array;
 }

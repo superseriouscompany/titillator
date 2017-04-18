@@ -4,6 +4,10 @@ import Octagon            from './Octagon'
 import Results            from './Results'
 
 class Stage extends Component {
+  componentDidMount() {
+    this.props.dispatch({type: 'nope'})
+  }
+
   render() { return (
     <div>
       { this.props.isDone ?
@@ -20,12 +24,14 @@ class Stage extends Component {
 
 function mapStateToProps(state) {
   return {
-    isDone: !state.people.red,
+    isDone: state.people.done,
+    x:      state.halp,
   }
 }
 
 function mapDispatchToProps(dispatch) {
   return {
+    dispatch: dispatch,
   }
 }
 
