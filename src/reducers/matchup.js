@@ -20,6 +20,11 @@ export default function people(state = initialState, action) {
         ...state,
         players: shuffleLadder(state.players),
       }
+    case 'ladder:remove':
+      return {
+        ...state,
+        players: remove(state.players, action.id),
+      }
     case 'matchup:next':
       const nextMatchup = matchup(state.players, state.round, state.index, state.comparisons)
       return {
@@ -110,6 +115,12 @@ function matchup(ladder, round, index, comparisons) {
   }
 
   return people
+}
+
+function remove(players, id) {
+  return players.filter((p) => {
+    return p.id !== id
+  })
 }
 
 function choose(players, winner, loser) {
