@@ -161,7 +161,7 @@ const csv = [
   "Pablo Rochat,M,https://media.licdn.com/mpr/mpr/shrink_100_100/p/7/005/047/146/0227555.jpg",
   "Zhixuan Lai,M,https://media.licdn.com/mpr/mpr/shrink_100_100/p/6/005/093/13f/3eb7ab1.jpg",
   "Rob Olague,M,https://media.licdn.com/mpr/mpr/shrink_100_100/AAEAAQAAAAAAAA3YAAAAJDg2ZjExM2NhLTRiYzItNDRjNS1hMzI5LTQ1OTJkZmM3YWQyZg.jpg",
-  "Preya Patel,F,https://media.licdn.com/mpr/mpr/shrink_100_100/p/7/005/01a/03f/0f9a8be.jpg",
+  "Preya Patel,F,https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/4/000/160/39b/266876a.jpg",
   "Johnson Hsieh,M,https://media.licdn.com/mpr/mpr/shrink_100_100/p/7/005/01a/03f/0f9a8be.jpg",
   "Nick Soracco,M,",
   "Chris Shaheen,M,https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/5/005/060/06a/2482e63.jpg",

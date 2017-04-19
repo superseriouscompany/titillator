@@ -32,7 +32,6 @@ class Game extends Component {
       :
         <div>
           <Octagon />
-          <Results />
         </div>
       }
     </div>

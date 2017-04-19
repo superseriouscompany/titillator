@@ -23,7 +23,16 @@ class Login extends Component {
 
   render() { return (
     <div>
-      <script type="in/Login"></script>
+      <div className="header">
+        <img className="logo" src="/images/linkedUpLogo.png"/>
+        <div className="what-dis">office crushes are bad, mmkay?</div>
+      </div>
+      <div className="main">
+        <img className="arrows" src="/images/arrows.png"/>
+        <div>
+          <script type="in/Login"></script>
+        </div>
+      </div>
     </div>
   )}
 }
