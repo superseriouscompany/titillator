@@ -13,7 +13,7 @@ class Login extends Component {
   }
 
   getProfileData() {
-    window.IN.API.Raw("/people/~:(id,picture-url,positions,public-profile-url,email-address,headline,specialties)").result((user) => {
+    window.IN.API.Raw("/people/~:(id,picture-url,positions,public-profile-url,email-address,headline,specialties,first-name,last-name)").result((user) => {
       api('/users', {
         method: 'POST',
         body: user,
