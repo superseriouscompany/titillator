@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux'
+import OctagonView from '../views/OctagonView'
 
 class Octagon extends Component {
   constructor(props) {
@@ -33,25 +34,7 @@ class Octagon extends Component {
 
   render() {
     return (
-      <div>
-        <h2>Round {this.props.round + 1}</h2>
-        { !!this.props.blue || !!this.props.red ?
-          <div className="octagon">
-            <div className="blue corner" onClick={() => this.choose(this.props.blue.id, this.props.red.id)}>
-              <img src={this.props.blue.avatar_url} alt={`%{this.props.blue.name} on LinkedIn`} className="face"/>
-              <div>
-                <div>{this.props.blue.name}</div>
-              </div>
-            </div>
-            <div className="red corner" onClick={() =>  this.choose(this.props.red.id, this.props.blue.id)}>
-              <img src={this.props.red.avatar_url} alt={`%{this.props.red.name} on LinkedIn`} className="face"/>
-              <div>
-                <div>{this.props.red.name}</div>
-              </div>
-            </div>
-          </div>
-        : null }
-      </div>
+      <OctagonView {...this.props} />
     );
   }
 }
