@@ -21,7 +21,7 @@ class Stage extends Component {
 function mapStateToProps(state) {
   return {
     scene:    state.scene.name,
-    authed:   !!state.profile.linkedinId,
+    authed:   !!state.profile.accessToken,
     oriented: !!state.profile.orientation,
   }
 }
