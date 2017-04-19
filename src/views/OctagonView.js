@@ -3,7 +3,10 @@ import React from 'react'
 export default function(props) {
   return (
     <div>
-      <h2>Round {props.round + 1}</h2>
+      <div className="roundHeader">
+        <div className="round">Round</div>
+        <div className="roundNumber">{props.round + 1}</div>
+      </div>
       { !!props.blue || !!props.red ?
         <div className="octagon">
           <div className="blue corner">
