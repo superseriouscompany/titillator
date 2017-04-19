@@ -3,6 +3,31 @@ html, body, .fullheight, #root {
   height: 100%;
 }
 
+.orientContainer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -25px;
+  transform: translate(-50%, -50%);
+}
+
+.orientButton {
+  height: 100px;
+  width: 200px;
+  text-align: center;
+  margin: 10px;
+  color: white;
+  font-size: 28px;
+}
+
+.men {
+  background: #2576B0;
+}
+
+.women {
+  background: #D85599;
+}
+
 .theButton {
   position: absolute
 }

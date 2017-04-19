@@ -3,9 +3,10 @@ import {connect}          from 'react-redux'
 
 class Orient extends Component {
   render() { return (
-    <div>
-      <button onClick={() => this.props.orient('M')}>Men at Tinder</button>
-      <button onClick={() => this.props.orient('F')}>Women at Tinder</button>
+    <div className="orientContainer">
+      <div className="orientDesc">choose your journey</div>
+      <button className="orientButton men" onClick={() => this.props.orient('M')}>Male Coworkers</button>
+      <button className="orientButton women" onClick={() => this.props.orient('F')}>Female Coworkers</button>
     </div>
   )}
 }
