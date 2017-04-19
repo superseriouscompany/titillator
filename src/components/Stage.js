@@ -20,12 +20,13 @@ class Stage extends Component {
 
 function mapStateToProps(state) {
   return {
-    isDone: !state.people.red,
+    isDone: state.people.done,
   }
 }
 
 function mapDispatchToProps(dispatch) {
   return {
+    dispatch: dispatch,
   }
 }
 

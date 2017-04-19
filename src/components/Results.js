@@ -7,7 +7,7 @@ class Result extends Component {
       Results!
       { this.props.players.map((p, key) => (
         <div key={key}>
-          {p.name} ({p.votes})
+          {p.wins.length} - {p.losses.length} {p.name}
         </div>
       ))}
     </div>
@@ -16,7 +16,7 @@ class Result extends Component {
 
 function mapStateToProps(state) {
   return {
-    players: (state.people.players || []).sort((a, b) => {
+    players: [].concat(state.people.players).sort((a, b) => {
       return a.votes < b.votes ? 1 : -1
     })
   }
