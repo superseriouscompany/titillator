@@ -1,5 +1,11 @@
-import {combineReducers, createStore, applyMiddleware} from 'redux';
-import logger from 'redux-logger'
+import {persistStore, autoRehydrate}                   from 'redux-persist'
+import logger                                          from 'redux-logger'
+import {
+  applyMiddleware,
+  combineReducers,
+  compose,
+  createStore,
+} from 'redux'
 
 import matchup from './matchup'
 import scene   from './scene'
@@ -11,4 +17,17 @@ const reducers = combineReducers({
   profile,
 })
 
-export default createStore(reducers, applyMiddleware(logger))
+const store = createStore(reducers, undefined, compose(
+  applyMiddleware(logger),
+  autoRehydrate()
+))
+
+const persistence = persistStore(store, {whitelist: [
+  'profile',
+]})
+
+export default store
+
+export function clear() {
+  persistence.purge()
+}

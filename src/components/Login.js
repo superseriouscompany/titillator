@@ -30,13 +30,14 @@ class Login extends Component {
 
 function mapStateToProps(state) {
   return {
-    
+
   }
 }
 
 function mapDispatchToProps(dispatch) {
   return {
     signin: function() {
+      dispatch({type: 'profile:linkin', linkedinId: 'nope'})
       dispatch({type: 'scene:change', scene: 'Octagon'})
     }
   }
