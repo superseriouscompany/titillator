@@ -8,6 +8,8 @@ a { cursor: pointer; }
   display: flex;
   justify-content: center;
   padding: 1em;
+  padding-bottom: 200px;
+  margin-top: -20px;
 }
 
 .roundHeader {
@@ -124,6 +126,25 @@ a.remove {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+.footer {
+  background: white;
+  position: fixed;
+  bottom: 0px;
+  padding-bottom: 16px;
+  padding-top: 16px;
+  width: 100%;
+  text-align: center;
+  border-top: 0.5px solid #F5F5F5;
+}
+
+.kanyeQuote {
+  font-size: 18;
+}
+
+.arrow {
+  margin: 4px;
 }
 
 @-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }

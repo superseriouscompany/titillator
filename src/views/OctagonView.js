@@ -30,6 +30,12 @@ export default function(props) {
           </div>
         </div>
       : null }
+
+      <div className="footer">
+        <img className="arrow" src="/images/leftArrow.png"/>
+        <img className="arrow" src="/images/rightArrow.png"/>
+        <div className="kanyeQuote">Ima let you finish but use your arrow keys</div>
+      </div>
     </div>
   )
 }
