@@ -7,6 +7,11 @@ export default function(props) {
         <div className="round">Round</div>
         <div className="roundNumber">{props.round + 1}</div>
       </div>
+
+      <button onClick={props.saveScores}>
+        Save Scores
+      </button>
+
       { !!props.blue || !!props.red ?
         <div className="octagon">
           <div className="blue corner">
