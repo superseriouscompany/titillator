@@ -1,15 +1,32 @@
 import players from '../players'
 
-shuffle(players)
-
 const initialState = {
-  players: players,
+  players:     players,
+  // TODO: break into separate reducers
+  round:       0,
+  index:       0,
+  comparisons: 0,
 }
 
 export default function people(state = initialState, action) {
   switch(action.type) {
+    case 'ladder:load':
+      return {
+        ...state,
+        players: action.ladder,
+      }
+    case 'ladder:shuffle':
+      return {
+        ...state,
+        players: shuffleLadder(state.players),
+      }
+    case 'ladder:remove':
+      return {
+        ...state,
+        players: remove(state.players, action.id),
+      }
     case 'matchup:next':
-      const nextMatchup = matchup()
+      const nextMatchup = matchup(state.players, state.round, state.index, state.comparisons)
       return {
         ...state,
         ...nextMatchup,
@@ -18,22 +35,23 @@ export default function people(state = initialState, action) {
       const players = choose(state.players, action.winner, action.loser)
       return {
         ...state,
+        comparisons: state.comparisons + 1,
         players: players,
+      }
+    case 'round:advance':
+      return {
+        ...state,
+        round:       state.round + 1,
+        index:       0,
+        comparisons: 0,
       }
     default:
       return state;
   }
 }
 
-let round       = 0;
-let index       = 0;
-let comparisons = 0;
-let ladder      = [].concat(players)
-
-function matchup() {
-  let people = {
-    round: round,
-  }
+function matchup(ladder, round, index, comparisons) {
+  let people = {}
   // Find person for left spot by moving index up until we find someone who hasn't been rated this round.
   while( index < ladder.length ) {
     people.blue = ladder[index]
@@ -42,20 +60,34 @@ function matchup() {
     break;
   }
   if( index >= ladder.length ) {
-    return nextRound(players)
+    return {
+      blue: null,
+      red: null,
+    }
   }
 
   // If there are an odd number of people and we're the last in line, start next round.
-  if( comparisons >= Math.floor(players.length / 2)  ) {
+  if( comparisons >= Math.floor(ladder.length / 2)  ) {
     // TODO: people who get byes are often dismissed forever...
     people.blue.losses.push(-1)
-    return nextRound(players)
+    return {
+      blue: null,
+      red: null,
+    }
   }
 
   // Find person to compare to
   let red = index
   let dir = 1
+  let attempts = 0
   while(true) {
+    if( attempts >= ladder.length ) {
+      return {
+        blue: null,
+        red: null,
+      }
+    }
+
     // if we're at the very bottom of the ladder, search up the ladder
     // if we're at the very top of the ladder, search down the ladder
     if( red === ladder.length - 1) {
@@ -72,40 +104,23 @@ function matchup() {
     // Reject if this matchup has been shown in a previous round.
     const compared =
       people.blue.wins.indexOf(people.red.id) !== -1   ||
-      people.blue.losses.indexOf(people.red.id) !== -1
+      people.blue.losses.indexOf(people.red.id) !== -1 ||
+      people.blue.id === people.red.id
 
     // If we have a valid match, break out of while: true
     if( valid && !compared ) {
       break
     }
+    attempts++
   }
 
-  comparisons++
   return people
 }
 
-function nextRound(players) {
-  ladder      = arrangeLadder(ladder, round)
-  round++;
-  index       = 0;
-  comparisons = 0;
-  return matchup(players)
-}
-
-function arrangeLadder(ladder, round) {
-  let tiers = [];
-  for( var i  = 0; i < round + 2; i++ ) {
-    tiers.push([])
-  }
-  ladder.forEach((p) => {
-    tiers[p.wins.length].push(p)
+function remove(players, id) {
+  return players.filter((p) => {
+    return p.id !== id
   })
-
-  tiers = tiers.reverse()
-  tiers.forEach((t) => {
-    shuffle(t)
-  })
-  return [].concat.apply([], tiers)
 }
 
 function choose(players, winner, loser) {
@@ -121,7 +136,26 @@ function choose(players, winner, loser) {
   })
 }
 
-function shuffle(array) {
+function shuffleLadder(ladder) {
+  let tiers = [];
+  let maxWins = 0;
+  ladder.forEach((l) => {
+    maxWins = Math.max(l.wins.length + l.losses.length, maxWins)
+  })
+  for( var i  = 0; i < maxWins + 1; i++ ) {
+    tiers.push([])
+  }
+  ladder.forEach((p) => {
+    tiers[p.wins.length].push(p)
+  })
+  tiers = tiers.reverse().map((t) => {
+    return shuffle(t)
+  })
+  return [].concat.apply([], tiers)
+}
+
+function shuffle(arr) {
+  let array = [].concat(arr)
   var currentIndex = array.length, temporaryValue, randomIndex;
 
   // While there remain elements to shuffle...

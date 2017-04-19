@@ -7,6 +7,7 @@ class Octagon extends Component {
     super(props)
     this.keydown = this.keydown.bind(this)
     this.choose  = this.choose.bind(this)
+    this.remove  = this.remove.bind(this)
   }
 
   keydown(e) {
@@ -19,6 +20,7 @@ class Octagon extends Component {
   }
 
   componentDidMount() {
+    this.props.shuffleLadder()
     this.props.nextMatchup()
     document.addEventListener('keydown', this.keydown)
   }
@@ -32,9 +34,14 @@ class Octagon extends Component {
     this.props.nextMatchup()
   }
 
+  remove(id) {
+    this.props.remove(id)
+    this.props.nextMatchup()
+  }
+
   render() {
     return (
-      <OctagonView {...this.props} />
+      <OctagonView {...this.props} choose={this.choose} remove={this.remove}/>
     );
   }
 }
@@ -42,9 +49,16 @@ class Octagon extends Component {
 function mapDispatchToProps(dispatch) {
   return {
     dispatch: dispatch,
+    shuffleLadder: function() {
+      dispatch({type: 'ladder:shuffle'})
+    },
     nextMatchup: function() {
+      dispatch({type: 'matchup:next'})
+    },
+    remove: function(id) {
       dispatch({
-        type: 'matchup:next'
+        type: 'ladder:remove',
+        id: id
       })
     },
     choose: function(winner, loser) {

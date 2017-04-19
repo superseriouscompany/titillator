@@ -3,3 +3,9 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+a.remove {
+  font-size: 12px;
+  color: hotpink;
+  font-family: 'Helvetica Neue', Helvetica, sans-serif;
+}

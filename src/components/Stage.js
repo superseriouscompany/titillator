@@ -1,22 +1,18 @@
-import React, {Component} from 'react';
-import {connect}          from 'react-redux';
-import Octagon            from './Octagon'
-import Results            from './Results'
+import React, {Component} from 'react'
+import {connect}          from 'react-redux'
 import Login              from './Login'
-
+import Orient             from './Orient'
+import Game               from './Game'
 
 class Stage extends Component {
   render() { return (
     <div>
-      { this.props.scene === 'Login' && false ?
+      {  !this.props.authed ?
         <Login />
-      : this.props.isDone ?
-        <Results />
+      : !this.props.oriented ?
+        <Orient />
       :
-        <div>
-          <Octagon />
-          <Results />
-        </div>
+        <Game />
       }
     </div>
   )}
@@ -24,8 +20,9 @@ class Stage extends Component {
 
 function mapStateToProps(state) {
   return {
-    isDone: state.matchup.done,
-    scene:  state.scene.name,
+    scene:    state.scene.name,
+    authed:   !!state.profile.linkedinId,
+    oriented: !!state.profile.orientation,
   }
 }
 
