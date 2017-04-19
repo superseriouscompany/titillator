@@ -11,7 +11,7 @@ export default function(state=initialState, action) {
         ...state,
         linkedinId: action.linkedinId,
       }
-    case 'profile:setOrientation':
+    case 'profile:orient':
       return {
         ...state,
         orientation: action.orientation,
