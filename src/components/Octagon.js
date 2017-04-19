@@ -34,6 +34,7 @@ class Octagon extends Component {
   choose(winnerId, loserId) {
     this.props.choose(winnerId, loserId)
     this.props.nextMatchup()
+    window.ga('send', 'event', 'comparison', 'made');
   }
 
   saveScores() {
