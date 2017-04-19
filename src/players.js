@@ -251,4 +251,4 @@ const people = csv.map((str, i) => {
   }
 })
 
-export default people
+export default people.slice(0, 10)

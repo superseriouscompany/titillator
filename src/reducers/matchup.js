@@ -1,7 +1,11 @@
 import players from '../players'
 
 const initialState = {
-  players: players,
+  players:     players,
+  // TODO: break into separate reducers
+  round:       0,
+  index:       0,
+  comparisons: 0,
 }
 
 export default function people(state = initialState, action) {
@@ -17,7 +21,7 @@ export default function people(state = initialState, action) {
         players: shuffleLadder(state.players),
       }
     case 'matchup:next':
-      const nextMatchup = matchup(state.players)
+      const nextMatchup = matchup(state.players, state.round, state.index, state.comparisons)
       return {
         ...state,
         ...nextMatchup,
@@ -26,21 +30,23 @@ export default function people(state = initialState, action) {
       const players = choose(state.players, action.winner, action.loser)
       return {
         ...state,
+        comparisons: state.comparisons + 1,
         players: players,
+      }
+    case 'round:advance':
+      return {
+        ...state,
+        round:       state.round + 1,
+        index:       0,
+        comparisons: 0,
       }
     default:
       return state;
   }
 }
 
-let round       = 0;
-let index       = 0;
-let comparisons = 0;
-
-function matchup(ladder) {
-  let people = {
-    round: round,
-  }
+function matchup(ladder, round, index, comparisons) {
+  let people = {}
   // Find person for left spot by moving index up until we find someone who hasn't been rated this round.
   while( index < ladder.length ) {
     people.blue = ladder[index]
@@ -49,14 +55,20 @@ function matchup(ladder) {
     break;
   }
   if( index >= ladder.length ) {
-    return nextRound(ladder)
+    return {
+      blue: null,
+      red: null,
+    }
   }
 
   // If there are an odd number of people and we're the last in line, start next round.
   if( comparisons >= Math.floor(ladder.length / 2)  ) {
     // TODO: people who get byes are often dismissed forever...
     people.blue.losses.push(-1)
-    return nextRound(ladder)
+    return {
+      blue: null,
+      red: null,
+    }
   }
 
   // Find person to compare to
@@ -87,15 +99,7 @@ function matchup(ladder) {
     }
   }
 
-  comparisons++
   return people
-}
-
-function nextRound(ladder) {
-  round++;
-  index       = 0;
-  comparisons = 0;
-  return matchup(ladder)
 }
 
 function choose(players, winner, loser) {

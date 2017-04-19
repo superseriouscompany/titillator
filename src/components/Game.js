@@ -8,12 +8,19 @@ class Game extends Component {
     this.props.loadLadder(this.props.players)
   }
 
+  componentWillReceiveProps(props) {
+    if( props.roundOver ) { alert('Next round!'); }
+  }
+
   render() { return (
     <div>
       { this.props.isDone ?
         <Results />
       :
-        <Octagon />
+        <div>
+          <Octagon />
+          <Results />
+        </div>
       }
     </div>
   )}
@@ -21,8 +28,8 @@ class Game extends Component {
 
 function mapStateToProps(state) {
   return {
-    isDone:  state.matchup.done,
-    players: state.matchup.players.filter((p) => {
+    roundOver: !state.matchup.blue || !state.matchup.red,
+    players:   state.matchup.players.filter((p) => {
       return p.gender === state.profile.orientation
     }),
   }
