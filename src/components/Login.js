@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import {connect}          from 'react-redux'
+import api                from '../api'
 
 class Login extends Component {
   constructor(props) {
@@ -12,9 +13,18 @@ class Login extends Component {
   }
 
   getProfileData() {
-    window.IN.API.Raw("/people/~").result((deets) => {
-      this.props.signin()
-      console.log(deets)
+    window.IN.API.Raw("/people/~:(id,picture-url,positions,public-profile-url,email-address)").result((user) => {
+      api('/users', {
+        method: 'POST',
+        body: user,
+      }).then((response) => {
+        return response.json()
+      }).then((json) => {
+        this.props.signin(json.access_token)
+      }).catch((err) => {
+        console.error(err)
+        alert(err.message || JSON.stringify(err))
+      })
     }).error((err) => {
       console.error(err);
       alert(err.message || JSON.stringify(err));
@@ -36,8 +46,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    signin: function() {
-      dispatch({type: 'profile:linkin', linkedinId: 'nope'})
+    signin: function(accessToken) {
+      dispatch({type: 'profile:linkin', accessToken: accessToken})
       dispatch({type: 'scene:change', scene: 'Octagon'})
     }
   }

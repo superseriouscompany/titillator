@@ -1,5 +1,5 @@
 const initialState = {
-  linkedinId:  null,
+  accessToken:  null,
   orientation: null,
   randos: [],
 }
@@ -9,7 +9,7 @@ export default function(state=initialState, action) {
     case 'profile:linkin':
       return {
         ...state,
-        linkedinId: action.linkedinId,
+        accessToken: action.accessToken,
       }
     case 'profile:orient':
       return {
