@@ -32,9 +32,12 @@ export default function(props) {
       : null }
 
       <div className="footer">
-        <img className="arrow" src="/images/leftArrow.png"/>
-        <img className="arrow" src="/images/rightArrow.png"/>
-        <div className="kanyeQuote">Ima let you finish but use your arrow keys</div>
+        <div className="arrowHint">
+          <img className="arrow" src="/images/leftArrow.png"/>
+          <img className="arrow" src="/images/rightArrow.png"/>
+          <div className="kanyeQuote">Ima let you finish but use your arrow keys</div>
+        </div>
+        <img className="kanye" src="/images/Kanye.png"/>
       </div>
     </div>
   )

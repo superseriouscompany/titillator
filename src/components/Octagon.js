@@ -15,8 +15,12 @@ class Octagon extends Component {
   keydown(e) {
     // TODO: make it work cross browser
     if( e.key === 'ArrowLeft' ) {
+      document.getElementsByClassName('arrowHint')[0].style.display = 'none';
+      document.getElementsByClassName('kanye')[0].style.display = 'block';
       this.choose(this.props.blue.id, this.props.red.id)
     } else if( e.key === 'ArrowRight' ) {
+      document.getElementsByClassName('arrowHint')[0].style.display = 'none';
+      document.getElementsByClassName('kanye')[0].style.display = 'block';
       this.choose(this.props.red.id, this.props.blue.id)
     }
   }

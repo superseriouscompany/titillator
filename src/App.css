@@ -7,6 +7,10 @@ a { cursor: pointer; }
 .octagon {
   display: flex;
   justify-content: center;
+  align-items: center;
+  height: 100%;
+  top: 0;
+  bottom: 0;
   padding: 1em;
   padding-bottom: 200px;
   margin-top: -20px;
@@ -46,8 +50,8 @@ a { cursor: pointer; }
 }
 
 .corner {
+  flex: 1;
   text-align: center;
-  width: 100%;
   max-width: 400px;
   max-height: 400px;
   min-width: 0;
@@ -65,11 +69,11 @@ a { cursor: pointer; }
 }
 
 .blue {
-  justify-content: flex-end;
+
 }
 
 .red {
-  justify-content: center;
+
 }
 
 .full-name {
@@ -129,6 +133,9 @@ a.remove {
 }
 
 .footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background: white;
   position: fixed;
   bottom: 0px;
@@ -139,12 +146,20 @@ a.remove {
   border-top: 0.5px solid #F5F5F5;
 }
 
+.arrowHint {
+}
+
 .kanyeQuote {
   font-size: 18;
 }
 
 .arrow {
   margin: 4px;
+}
+
+.kanye {
+  display: none;
+  height: 68px;
 }
 
 @-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
