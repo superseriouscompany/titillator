@@ -69,11 +69,11 @@ html, body, .fullheight, #root {
 }
 
 .blue {
-
+  cursor: nw-resize;
 }
 
 .red {
-
+  cursor: ne-resize;
 }
 
 .full-name {
