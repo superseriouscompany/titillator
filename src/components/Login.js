@@ -34,11 +34,11 @@ class Login extends Component {
   render() { return (
     <div>
       <div className="header">
-        <img className="logo" src="/images/linkedUpLogo.png"/>
+        <img className="logo" src="/images/linkedUpLogo.png" alt="Logo"/>
         <div className="what-dis">office crushes are bad, mmkay?</div>
       </div>
       <div className="main">
-        <img className="arrows" src="/images/arrows.png"/>
+        <img className="arrows" src="/images/arrows.png" alt="Arrows"/>
         <div>
           <script type="in/Login"></script>
         </div>

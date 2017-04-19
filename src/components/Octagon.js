@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
-import {connect} from 'react-redux'
-import OctagonView from '../views/OctagonView'
+import {connect}            from 'react-redux'
+import OctagonView          from '../views/OctagonView'
+import api                  from '../api'
 
 class Octagon extends Component {
   constructor(props) {
     super(props)
-    this.keydown = this.keydown.bind(this)
-    this.choose  = this.choose.bind(this)
-    this.remove  = this.remove.bind(this)
+    this.keydown    = this.keydown.bind(this)
+    this.choose     = this.choose.bind(this)
+    this.remove     = this.remove.bind(this)
+    this.saveScores = this.saveScores.bind(this)
   }
 
   keydown(e) {
@@ -34,6 +36,20 @@ class Octagon extends Component {
     this.props.nextMatchup()
   }
 
+  saveScores() {
+    api('/rankings', {
+      method: 'POST',
+      accessToken: this.props.accessToken,
+      body: {
+        ladder: this.props.ladder.map((p) => { return [p.id, p.wins.length, p.losses.length]})
+      },
+    }).then(() => {
+      alert('Saved!')
+    }).catch((err) => {
+      alert(err.message || JSON.stringify(err))
+    })
+  }
+
   remove(id) {
     this.props.remove(id)
     this.props.nextMatchup()
@@ -41,7 +57,10 @@ class Octagon extends Component {
 
   render() {
     return (
-      <OctagonView {...this.props} choose={this.choose} remove={this.remove}/>
+      <OctagonView {...this.props}
+        choose={this.choose}
+        remove={this.remove}
+        saveScores={this.saveScores} />
     );
   }
 }
@@ -73,9 +92,11 @@ function mapDispatchToProps(dispatch) {
 
 function mapStateToProps(state) {
   return {
-    red:   state.matchup.red,
-    blue:  state.matchup.blue,
-    round: state.matchup.round,
+    red:         state.matchup.red,
+    blue:        state.matchup.blue,
+    round:       state.matchup.round,
+    accessToken: state.profile.accessToken,
+    ladder:      state.matchup.players,
   }
 }
 
