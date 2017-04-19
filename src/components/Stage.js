@@ -2,11 +2,15 @@ import React, {Component} from 'react';
 import {connect}          from 'react-redux';
 import Octagon            from './Octagon'
 import Results            from './Results'
+import Login              from './Login'
+
 
 class Stage extends Component {
   render() { return (
     <div>
-      { this.props.isDone ?
+      { this.props.scene === 'Login' ?
+        <Login />
+      : this.props.isDone ?
         <Results />
       :
         <div>
@@ -21,6 +25,7 @@ class Stage extends Component {
 function mapStateToProps(state) {
   return {
     isDone: state.people.done,
+    scene:  state.scene.name,
   }
 }
 
