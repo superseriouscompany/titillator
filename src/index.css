@@ -1,13 +1,8 @@
-@import url(//fonts.googleapis.com/css?family=Open+Sans);
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:light');
 
 html, body {
   margin: 0;
   padding: 0;
   font-family: 'Open Sans', Helvetica, sans-serif;
-}
-
-a.remove {
-  font-size: 12px;
-  color: hotpink;
-  font-family: 'Helvetica Neue', Helvetica, sans-serif;
+  color: #252525;
 }

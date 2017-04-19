@@ -12,7 +12,7 @@ export default function(props) {
               <div className="full-name">{props.blue.name}</div>
             </div>
             { props.round === 0 ?
-              <a className="remove" onClick={() => props.remove(props.blue.id)}>dunno</a>
+              <a className="remove" onClick={() => props.remove(props.blue.id)}>remove stranger</a>
             : null }
           </div>
           <div className="red corner">
@@ -21,7 +21,7 @@ export default function(props) {
               <div className="full-name">{props.red.name}</div>
             </div>
             { props.round === 0 ?
-              <a className="remove" onClick={() => props.remove(props.red.id)}>dunno</a>
+              <a className="remove" onClick={() => props.remove(props.red.id)}>remove stranger</a>
             : null }
           </div>
         </div>

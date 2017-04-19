@@ -16,7 +16,6 @@ a { cursor: pointer; }
 
 .card {
   margin: 10px;
-  font-size: 32px;
   min-width: 0;
 }
 
@@ -35,10 +34,23 @@ a { cursor: pointer; }
 }
 
 .full-name {
+  margin-top: 9px;
   min-width: 0;
+  font-size: 32px;
+  font-weight: light;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: clip;
+}
+
+a.remove {
+  min-width: 0;
+  font-size: 24px;
+  font-weight: light;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: clip;
+  box-shadow: inset 0 -3.5px 0 white, inset 0 -4px 0 #252525;
 }
 
 .header {
