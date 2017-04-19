@@ -16,11 +16,14 @@ class Game extends Component {
   componentWillReceiveProps(props) {
     if( props.roundOver && !this.props.roundOver) {
       if( props.round >= props.players.length - 1 ) {
+        window.ga('send', 'event', 'round', 'completedAll', 'default', props.round);
         this.setState({
           done: true,
         })
         return
       }
+
+      window.ga('send', 'event', 'round', 'completed', 'default', props.round);
       this.props.advance()
     }
   }
