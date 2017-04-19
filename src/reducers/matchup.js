@@ -1,15 +1,23 @@
 import players from '../players'
 
-shuffle(players)
-
 const initialState = {
   players: players,
 }
 
 export default function people(state = initialState, action) {
   switch(action.type) {
+    case 'ladder:load':
+      return {
+        ...state,
+        players: action.ladder,
+      }
+    case 'ladder:shuffle':
+      return {
+        ...state,
+        players: shuffleLadder(state.players),
+      }
     case 'matchup:next':
-      const nextMatchup = matchup()
+      const nextMatchup = matchup(state.players)
       return {
         ...state,
         ...nextMatchup,
@@ -28,9 +36,8 @@ export default function people(state = initialState, action) {
 let round       = 0;
 let index       = 0;
 let comparisons = 0;
-let ladder      = [].concat(players)
 
-function matchup() {
+function matchup(ladder) {
   let people = {
     round: round,
   }
@@ -42,14 +49,14 @@ function matchup() {
     break;
   }
   if( index >= ladder.length ) {
-    return nextRound(players)
+    return nextRound(ladder)
   }
 
   // If there are an odd number of people and we're the last in line, start next round.
-  if( comparisons >= Math.floor(players.length / 2)  ) {
+  if( comparisons >= Math.floor(ladder.length / 2)  ) {
     // TODO: people who get byes are often dismissed forever...
     people.blue.losses.push(-1)
-    return nextRound(players)
+    return nextRound(ladder)
   }
 
   // Find person to compare to
@@ -84,28 +91,11 @@ function matchup() {
   return people
 }
 
-function nextRound(players) {
-  ladder      = arrangeLadder(ladder, round)
+function nextRound(ladder) {
   round++;
   index       = 0;
   comparisons = 0;
-  return matchup(players)
-}
-
-function arrangeLadder(ladder, round) {
-  let tiers = [];
-  for( var i  = 0; i < round + 2; i++ ) {
-    tiers.push([])
-  }
-  ladder.forEach((p) => {
-    tiers[p.wins.length].push(p)
-  })
-
-  tiers = tiers.reverse()
-  tiers.forEach((t) => {
-    shuffle(t)
-  })
-  return [].concat.apply([], tiers)
+  return matchup(ladder)
 }
 
 function choose(players, winner, loser) {
@@ -121,7 +111,26 @@ function choose(players, winner, loser) {
   })
 }
 
-function shuffle(array) {
+function shuffleLadder(ladder) {
+  let tiers = [];
+  let maxWins = 0;
+  ladder.forEach((l) => {
+    maxWins = Math.max(l.wins.length + l.losses.length, maxWins)
+  })
+  for( var i  = 0; i < maxWins + 1; i++ ) {
+    tiers.push([])
+  }
+  ladder.forEach((p) => {
+    tiers[p.wins.length].push(p)
+  })
+  tiers = tiers.reverse().map((t) => {
+    return shuffle(t)
+  })
+  return [].concat.apply([], tiers)
+}
+
+function shuffle(arr) {
+  let array = [].concat(arr)
   var currentIndex = array.length, temporaryValue, randomIndex;
 
   // While there remain elements to shuffle...

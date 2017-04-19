@@ -19,6 +19,7 @@ class Octagon extends Component {
   }
 
   componentDidMount() {
+    this.props.shuffleLadder()
     this.props.nextMatchup()
     document.addEventListener('keydown', this.keydown)
   }
@@ -42,11 +43,8 @@ class Octagon extends Component {
 function mapDispatchToProps(dispatch) {
   return {
     dispatch: dispatch,
-    nextMatchup: function() {
-      dispatch({
-        type: 'matchup:next'
-      })
-    },
+    shuffleLadder: function() { dispatch({type: 'ladder:shuffle'}) },
+    nextMatchup: function() { dispatch({type: 'matchup:next'}) },
     choose: function(winner, loser) {
       dispatch({
         type: 'matchup:choose',

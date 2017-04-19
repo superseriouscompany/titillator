@@ -4,7 +4,7 @@ import Octagon            from './Octagon'
 import Results            from './Results'
 
 class Game extends Component {
-  componentDidMount() {
+  componentWillMount() {
     this.props.loadLadder(this.props.players)
   }
 
