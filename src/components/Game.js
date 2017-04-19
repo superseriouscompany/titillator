@@ -29,11 +29,11 @@ class Game extends Component {
   }
 
   render() { return (
-    <div>
+    <div className="fullheight">
       { this.state.done ?
         <Results />
       :
-        <div>
+        <div className="fullheight">
           <Octagon />
         </div>
       }

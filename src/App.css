@@ -1,28 +1,27 @@
 a { cursor: pointer; }
+html, body, .fullheight, #root {
+  height: 100%;
+}
 
 .theButton {
   position: absolute
+}
+
+.octagon-container {
+  display:        flex;
+  flex-direction: column;
 }
 
 .octagon {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%;
-  top: 0;
-  bottom: 0;
-  padding: 1em;
-  padding-bottom: 200px;
-  margin-top: -20px;
+  flex: 1;
 }
 
 .roundHeader {
   display: flex;
-  flex: 1;
   justify-content: flex-end;
-  width: 100;
-  height: 100;
-  width: 100;
   padding: 20px;
 }
 
@@ -137,11 +136,8 @@ a.remove {
   justify-content: center;
   align-items: center;
   background: white;
-  position: fixed;
-  bottom: 0px;
   padding-bottom: 16px;
   padding-top: 16px;
-  width: 100%;
   text-align: center;
   border-top: 0.5px solid #F5F5F5;
 }

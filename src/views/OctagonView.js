@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function(props) {
   return (
-    <div>
+    <div className="fullheight octagon-container">
       <div className="roundHeader">
         <div className="round">Round</div>
         <div className="roundNumber">{props.round + 1}</div>

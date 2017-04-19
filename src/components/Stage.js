@@ -5,17 +5,13 @@ import Orient             from './Orient'
 import Game               from './Game'
 
 class Stage extends Component {
-  render() { return (
-    <div>
-      {  !this.props.authed ?
-        <Login />
-      : !this.props.oriented ?
-        <Orient />
-      :
-        <Game />
-      }
-    </div>
-  )}
+  render() {
+    if( !this.props.authed )
+      return <Login />
+    if( !this.props.oriented )
+      return <Orient />
+    return <Game />
+  }
 }
 
 function mapStateToProps(state) {
