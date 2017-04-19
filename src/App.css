@@ -11,11 +11,13 @@ a { cursor: pointer; }
   width: 100%;
   max-width: 400px;
   max-height: 400px;
+  min-width: 0;
 }
 
 .card {
   margin: 10px;
   font-size: 32px;
+  min-width: 0;
 }
 
 .face {
@@ -33,7 +35,10 @@ a { cursor: pointer; }
 }
 
 .full-name {
-  font-size: 100%;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: clip;
 }
 
 .header {
