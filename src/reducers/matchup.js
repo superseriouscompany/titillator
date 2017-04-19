@@ -14,7 +14,7 @@ export default function people(state = initialState, action) {
         ...state,
         ...nextMatchup,
       }
-    case 'people:choose':
+    case 'matchup:choose':
       const players = choose(state.players, action.winner, action.loser)
       return {
         ...state,

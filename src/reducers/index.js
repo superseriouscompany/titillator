@@ -1,11 +1,11 @@
 import {combineReducers, createStore, applyMiddleware} from 'redux';
 import logger from 'redux-logger'
 
-import people from './people'
+import matchup from './matchup'
 import scene from './scene'
 
 const reducers = combineReducers({
-  people,
+  matchup,
   scene,
 })
 

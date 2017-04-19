@@ -49,7 +49,7 @@ function mapDispatchToProps(dispatch) {
     },
     choose: function(winner, loser) {
       dispatch({
-        type: 'people:choose',
+        type: 'matchup:choose',
         winner: winner,
         loser: loser,
       })
@@ -59,9 +59,9 @@ function mapDispatchToProps(dispatch) {
 
 function mapStateToProps(state) {
   return {
-    red:   state.people.red,
-    blue:  state.people.blue,
-    round: state.people.round,
+    red:   state.matchup.red,
+    blue:  state.matchup.blue,
+    round: state.matchup.round,
   }
 }
 
