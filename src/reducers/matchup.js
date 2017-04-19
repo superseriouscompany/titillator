@@ -74,7 +74,15 @@ function matchup(ladder, round, index, comparisons) {
   // Find person to compare to
   let red = index
   let dir = 1
+  let attempts = 0
   while(true) {
+    if( attempts >= ladder.length ) {
+      return {
+        blue: null,
+        red: null,
+      }
+    }
+
     // if we're at the very bottom of the ladder, search up the ladder
     // if we're at the very top of the ladder, search down the ladder
     if( red === ladder.length - 1) {
@@ -91,12 +99,14 @@ function matchup(ladder, round, index, comparisons) {
     // Reject if this matchup has been shown in a previous round.
     const compared =
       people.blue.wins.indexOf(people.red.id) !== -1   ||
-      people.blue.losses.indexOf(people.red.id) !== -1
+      people.blue.losses.indexOf(people.red.id) !== -1 ||
+      people.blue.id === people.red.id
 
     // If we have a valid match, break out of while: true
     if( valid && !compared ) {
       break
     }
+    attempts++
   }
 
   return people

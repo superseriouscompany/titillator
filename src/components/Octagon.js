@@ -35,7 +35,7 @@ class Octagon extends Component {
 
   render() {
     return (
-      <OctagonView {...this.props} />
+      <OctagonView {...this.props} choose={this.choose}/>
     );
   }
 }
