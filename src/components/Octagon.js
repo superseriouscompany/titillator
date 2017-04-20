@@ -26,8 +26,9 @@ class Octagon extends Component {
   }
 
   componentDidMount() {
-    this.props.shuffleLadder()
-    this.props.nextMatchup()
+    if( !this.props.blue || !this.props.red ) {
+      this.props.nextMatchup()
+    }
     document.addEventListener('keydown', this.keydown)
   }
 
@@ -92,6 +93,12 @@ function mapDispatchToProps(dispatch) {
         loser: loser,
       })
     },
+    showResults: function() {
+      dispatch({
+        type:  'scene:change',
+        scene: 'Results',
+      })
+    }
   }
 }
 

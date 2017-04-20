@@ -8,9 +8,9 @@ export default function(props) {
         <div className="roundNumber">{props.round + 1}</div>
       </div>
 
-      <button className="theButton" onClick={props.saveScores}>
-        Save Scores
-      </button>
+      <a onClick={props.showResults}>
+        Results
+      </a>
 
       { !!props.blue || !!props.red ?
         <div className="octagon">

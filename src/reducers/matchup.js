@@ -1,7 +1,5 @@
-import players from '../players'
-
 const initialState = {
-  players:     players,
+  players:     [],
   // TODO: break into separate reducers
   round:       0,
   index:       0,

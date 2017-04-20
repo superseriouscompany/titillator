@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {connect}          from 'react-redux'
 import Octagon            from './Octagon'
 import Results            from './Results'
+import allPlayers         from '../players'
 
 class Game extends Component {
   constructor(props) {
@@ -10,7 +11,12 @@ class Game extends Component {
   }
 
   componentWillMount() {
-    this.props.loadLadder(this.props.players)
+    if( !this.props.players.length ) {
+      const players = allPlayers.filter((p) => {
+        return p.gender === this.props.orientation
+      })
+      this.props.loadLadder(players)
+    }
   }
 
   componentWillReceiveProps(props) {
@@ -30,7 +36,7 @@ class Game extends Component {
 
   render() { return (
     <div className="fullheight">
-      { this.state.done ?
+      { this.props.scene === 'Results' ?
         <Results />
       :
         <div className="fullheight">
@@ -43,11 +49,11 @@ class Game extends Component {
 
 function mapStateToProps(state) {
   return {
-    roundOver: !state.matchup.blue || !state.matchup.red,
-    round:     state.matchup.round,
-    players:   state.matchup.players.filter((p) => {
-      return p.gender === state.profile.orientation
-    }),
+    roundOver:   !state.matchup.blue || !state.matchup.red,
+    round:       state.matchup.round,
+    players:     state.matchup.players,
+    orientation: state.profile.orientation,
+    scene:       state.scene.name,
   }
 }
 
@@ -55,6 +61,7 @@ function mapDispatchToProps(dispatch) {
   return {
     loadLadder: function(players) {
       dispatch({type: 'ladder:load', ladder: players})
+      dispatch({type: 'ladder:shuffle'})
     },
     advance: function() {
       dispatch({type: 'round:advance'})
