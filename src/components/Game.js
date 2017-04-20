@@ -2,7 +2,6 @@ import React, {Component} from 'react'
 import {connect}          from 'react-redux'
 import Octagon            from './Octagon'
 import Results            from './Results'
-import allPlayers         from '../players'
 import api                from '../api'
 
 class Game extends Component {
@@ -13,11 +12,32 @@ class Game extends Component {
   }
 
   componentWillMount() {
-    if( !this.props.players.length ) {
-      const players = allPlayers.filter((p) => {
-        return p.gender === this.props.orientation
+    if( this.props.players.length ) {
+      this.setState({ready: true})
+    } else {
+      console.log('using accessToken', this.props.accessToken)
+      api('/coworkers', {
+        method: 'GET',
+        accessToken: this.props.accessToken,
+      }).then((response) => {
+        return response.json()
+      }).then((json) => {
+        const players = json.users.filter((p) => {
+          return p.gender === this.props.orientation
+        }).map((p) => {
+          p.votes  = 0
+          p.wins   = []
+          p.losses = []
+          return p
+        })
+        this.props.loadLadder(players)
+        this.setState({ready: true})
+      }).catch((err) => {
+        if( window.location.href.match(/localhost/) ) {
+          alert(err.message || JSON.stringify(err))
+        }
+        console.error(err)
       })
-      this.props.loadLadder(players)
     }
   }
 
@@ -54,7 +74,9 @@ class Game extends Component {
 
   render() { return (
     <div className="fullheight">
-      { this.props.scene === 'Results' ?
+      { !this.state.ready ?
+        <span>Loading...</span>
+      : this.props.scene === 'Results' ?
         <Results />
       :
         <div className="fullheight">

@@ -30,7 +30,7 @@ export default function(props) {
           <div className="members">
             { t.map((p, key) => (
               <div className="member" key={key}>
-                <img src={p.avatar_url} alt={`%{p.name} on linkedin`} />
+                <img src={p.avatarUrl} alt={`%{p.name} on linkedin`} />
                 {p.name}
               </div>
             ))}
