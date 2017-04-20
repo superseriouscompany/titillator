@@ -93,6 +93,12 @@ html, body, .fullheight, #root {
   border-radius: 1em
 }
 
+.face:hover {
+  width: 102.5%;
+  margin-top: -1.25%;
+  margin-left: -1.25%;
+}
+
 .blue {
   cursor: nw-resize;
 }
