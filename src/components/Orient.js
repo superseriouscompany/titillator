@@ -7,6 +7,7 @@ class Orient extends Component {
       <div className="orientDesc">choose your journey</div>
       <button className="orientButton men" onClick={() => this.props.orient('M')}>Male Coworkers</button>
       <button className="orientButton women" onClick={() => this.props.orient('F')}>Female Coworkers</button>
+      <div className="orientDesc">hint: if you don't recognize a person, remove them from your list right away</div>
     </div>
   )}
 }
