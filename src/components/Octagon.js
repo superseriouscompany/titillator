@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import {connect}            from 'react-redux'
 import OctagonView          from '../views/OctagonView'
-import api                  from '../api'
 
 class Octagon extends Component {
   constructor(props) {
@@ -9,7 +8,6 @@ class Octagon extends Component {
     this.keydown    = this.keydown.bind(this)
     this.choose     = this.choose.bind(this)
     this.remove     = this.remove.bind(this)
-    this.saveScores = this.saveScores.bind(this)
   }
 
   keydown(e) {
@@ -42,20 +40,6 @@ class Octagon extends Component {
     window.ga('send', 'event', 'comparison', 'made');
   }
 
-  saveScores() {
-    api('/rankings', {
-      method: 'POST',
-      accessToken: this.props.accessToken,
-      body: {
-        ladder: this.props.ladder.map((p) => { return [p.id, p.wins.length, p.losses.length]})
-      },
-    }).then(() => {
-      alert('Saved!')
-    }).catch((err) => {
-      alert(err.message || JSON.stringify(err))
-    })
-  }
-
   remove(id) {
     this.props.remove(id)
     this.props.nextMatchup()
@@ -65,8 +49,7 @@ class Octagon extends Component {
     return (
       <OctagonView {...this.props}
         choose={this.choose}
-        remove={this.remove}
-        saveScores={this.saveScores} />
+        remove={this.remove} />
     );
   }
 }

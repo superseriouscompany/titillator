@@ -1,5 +1,4 @@
 import React from 'react'
-import Orient from '../components/Orient'
 
 export default function(props) {
   return (
