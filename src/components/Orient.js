@@ -23,6 +23,8 @@ function mapDispatchToProps(dispatch) {
     orient: function(gender) {
       window.ga('send', 'event', 'orientation', 'selected', gender);
       dispatch({type: 'profile:orient', orientation: gender})
+      dispatch({type: 'scene:change', scene: 'Octagon'})
+      dispatch({type: 'ladder:reset'})
     }
   }
 }

@@ -98,6 +98,12 @@ function mapDispatchToProps(dispatch) {
         type:  'scene:change',
         scene: 'Results',
       })
+    },
+    reorient: function() {
+      dispatch({
+        type: 'scene:change',
+        scene: 'Orient',
+      })
     }
   }
 }

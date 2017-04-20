@@ -1,16 +1,19 @@
 import React from 'react'
+import Orient from '../components/Orient'
 
 export default function(props) {
   return (
     <div className="fullheight octagon-container">
       <div className="roundHeader">
+        <a onClick={props.reorient}>
+          Reset and Change Gender
+        </a>
+        <a onClick={props.showResults}>
+          Results
+        </a>
         <div className="round">Round</div>
         <div className="roundNumber">{props.round + 1}</div>
       </div>
-
-      <a onClick={props.showResults}>
-        Results
-      </a>
 
       { !!props.blue || !!props.red ?
         <div className="octagon">

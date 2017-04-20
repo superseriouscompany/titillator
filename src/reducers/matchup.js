@@ -8,6 +8,8 @@ const initialState = {
 
 export default function people(state = initialState, action) {
   switch(action.type) {
+    case 'ladder:reset':
+      return initialState
     case 'ladder:load':
       return {
         ...state,
