@@ -90,7 +90,8 @@ html, body, .fullheight, #root {
 .face {
   width: 100%;
   display: block;
-  border-radius: 1em
+  border-radius: 1em;
+  cursor: url(../public/images/DrakeArrow.png), auto;
 }
 
 .face:hover {
@@ -100,11 +101,9 @@ html, body, .fullheight, #root {
 }
 
 .blue {
-  cursor: url(../public/images/DrakeLeft.png), auto;
 }
 
 .red {
-  cursor: url(../public/images/DrakeRight.png), auto;
 }
 
 .full-name {
