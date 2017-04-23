@@ -100,11 +100,11 @@ html, body, .fullheight, #root {
 }
 
 .blue {
-  cursor: nw-resize;
+  cursor: url(../public/images/DrakeLeft.png), auto;
 }
 
 .red {
-  cursor: ne-resize;
+  cursor: url(../public/images/DrakeRight.png), auto;
 }
 
 .full-name {
