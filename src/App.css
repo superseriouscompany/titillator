@@ -5,30 +5,16 @@ html, body, .fullheight, #root {
 
 .intro { display: flex; justify-content: center; align-items: center; flex-direction: column; cursor: pointer; }
 
-.orientContainer {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin-top: -25px;
-  transform: translate(-50%, -50%);
-}
+/* Orientation */
+.orientContainer { position: absolute; top: 50%; left: 50%; margin-top: -25px; transform: translate(-50%, -50%); }
+.orientButton { height: 100px; width: 200px; text-align: center; margin: 10px; color: white; font-size: 28px; }
+.men { background: #2576B0; }
+.women { background: #D85599; }
 
-.orientButton {
-  height: 100px;
-  width: 200px;
-  text-align: center;
-  margin: 10px;
-  color: white;
-  font-size: 28px;
-}
-
-.men {
-  background: #2576B0;
-}
-
-.women {
-  background: #D85599;
-}
+/* Filter */
+.filter .player { display: flex; align-items: center; margin: 1em 0; }
+.filter .player input[type=checkbox]{ margin-right: 1em; }
+.filter .player img { width: 100px; margin-right: 1em; }
 
 .theButton {
   position: absolute
