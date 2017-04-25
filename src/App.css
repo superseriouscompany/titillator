@@ -8,10 +8,10 @@ html, body, .fullheight, #root {
 .introImg { max-width: 80%; max-height: 80%; }
 
 /* Orientation */
-.orientContainer { position: absolute; top: 50%; left: 50%; margin-top: -25px; transform: translate(-50%, -50%); }
-.orientButton { height: 100px; width: 200px; text-align: center; margin: 10px; color: white; font-size: 28px; }
-.men { background: #2576B0; }
-.women { background: #D85599; }
+.orientContainer { display: flex; align-items: center; justify-content: center; flex-direction: column; }
+.orientButtons  { display: flex; margin-top: 1em; }
+.orientButton { width: 150px; height: 150px; display: flex; align-items: center; justify-content: center; text-align: center; color: white; background-color: transparent; border: 0; font-size: 100px; cursor: pointer; line-height: 144px; }
+.orientButton:hover { transform: scale(1.1) }
 
 /* Filter */
 .filter .player { display: flex; align-items: center; margin: 1em 0; }
