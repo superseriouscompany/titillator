@@ -24,7 +24,7 @@ const store = createStore(reducers, undefined, compose(
 
 const persistence = persistStore(store, {whitelist: [
   'profile',
-  'matchup',
+//  'matchup',
 ]})
 
 export default store

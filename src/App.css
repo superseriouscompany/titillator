@@ -15,11 +15,13 @@ html, body, .fullheight, #root {
 
 /* Filter */
 .filter { display: flex; flex-wrap: wrap; }
-.filter .player { display: flex; flex-direction: column; justify-content: center; margin: 1em 0; width: 20%; overflow: hidden; }
+.filter .player { position: relative; display: flex; flex-direction: column; justify-content: center; margin: 1em 0; margin-right: 10%; width: 15%; overflow: hidden; }
 .filter .player input[type=checkbox]{ display: none }
-.filter .player input:checked + img { opacity: 1; }
-.filter .player img { width: 75%; opacity: 0.5; }
-.filter .player .text { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-size: 12px; text-align: center; text-decoration: line-through; }
+.filter .greenCheck { font-size: 24px; display: none }
+.filter .player input:checked + div .greenCheck { display: block; position: absolute; top: 5px; right: 10px; }
+.filter .player input:checked + div img { opacity: 1; }
+.filter .player img { width: 100%; opacity: 0.5; border-radius: 3px; -webkit-user-select: none; }
+.filter .player .text { display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-size: 12px; text-align: center; }
 .filter .player input:checked + img + .text { text-decoration: none; }
 
 .theButton {
