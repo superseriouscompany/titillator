@@ -14,9 +14,13 @@ html, body, .fullheight, #root {
 .orientButton:hover { transform: scale(1.1) }
 
 /* Filter */
-.filter .player { display: flex; align-items: center; margin: 1em 0; }
-.filter .player input[type=checkbox]{ margin-right: 1em; }
-.filter .player img { width: 100px; margin-right: 1em; }
+.filter { display: flex; flex-wrap: wrap; }
+.filter .player { display: flex; flex-direction: column; justify-content: center; margin: 1em 0; width: 20%; overflow: hidden; }
+.filter .player input[type=checkbox]{ display: none }
+.filter .player input:checked + img { opacity: 1; }
+.filter .player img { width: 75%; opacity: 0.5; }
+.filter .player .text { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-size: 12px; text-align: center; text-decoration: line-through; }
+.filter .player input:checked + img + .text { text-decoration: none; }
 
 .theButton {
   position: absolute
