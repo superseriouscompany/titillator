@@ -46,13 +46,12 @@ class Login extends Component {
   }
 
   render() { return (
-    <div>
+    <div className="fullheight">
       { this.state.step < this.state.prompts.length ?
-        <div>
-          <div>
+        <div className="intro fullheight" onClick={this.next}>
+          <div className="text">
             {this.state.prompts[this.state.step]}
           </div>
-          <button onClick={this.next}>Next</button>
         </div>
       : null }
 

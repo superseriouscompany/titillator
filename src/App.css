@@ -3,6 +3,8 @@ html, body, .fullheight, #root {
   height: 100%;
 }
 
+.intro { display: flex; justify-content: center; align-items: center; flex-direction: column; cursor: pointer; }
+
 .orientContainer {
   position: absolute;
   top: 50%;
@@ -94,13 +96,8 @@ html, body, .fullheight, #root {
   margin-left: -1.25%;
 }
 
-.blue .face {
-  cursor: url(../public/images/DrakeArrowLeft.png), auto;
-}
-
-.red .face {
-  cursor: url(../public/images/DrakeArrowRight.png), auto;
-}
+.blue .face { cursor: url(../public/images/DrakeArrowLeft.png), auto; }
+.red .face { cursor: url(../public/images/DrakeArrowRight.png), auto; }
 
 
 .full-name {
