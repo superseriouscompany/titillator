@@ -74,13 +74,8 @@ html, body, .fullheight, #root {
   margin-left: 8px;
 }
 
-.corner {
-  flex: 1;
-  text-align: center;
-  max-width: 400px;
-  max-height: 400px;
-  min-width: 0;
-}
+.corner { flex: 1; text-align: center; max-width: 400px; max-height: 400px; min-width: 0; }
+.corner:hover { transform: scale(1.03); }
 
 .card {
   margin: 10px;
@@ -92,12 +87,6 @@ html, body, .fullheight, #root {
   display: block;
   border-radius: 1em;
   cursor: url(../public/images/DrakeArrow.png), auto;
-}
-
-.face:hover {
-  width: 102.5%;
-  margin-top: -1.25%;
-  margin-left: -1.25%;
 }
 
 .blue {
@@ -116,14 +105,15 @@ html, body, .fullheight, #root {
   text-overflow: clip;
 }
 
-a.remove {
-  min-width: 0;
-  font-size: 16px;
-  font-weight: light;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: clip;
-  box-shadow: inset 0 -3.5px 0 white, inset 0 -4px 0 #252525;
+.corner {
+  position: relative;
+}
+
+a.remove { position: absolute; left: -21px; top: -13px; }
+a.remove img { width: 75%; }
+.red a.remove {
+  left: auto;
+  right: -21px;
 }
 
 .header {
