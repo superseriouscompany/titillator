@@ -6,6 +6,16 @@ class Login extends Component {
   constructor(props) {
     super(props)
     this.getProfileData = this.getProfileData.bind(this)
+    this.next           = this.next.bind(this)
+    this.state = {
+      step: 0,
+      prompts: [
+        'hello',
+        'world',
+        'you',
+        'suck',
+      ]
+    }
   }
 
   componentDidMount() {
@@ -31,16 +41,31 @@ class Login extends Component {
     })
   }
 
+  next() {
+    return this.setState({step: this.state.step + 1})
+  }
+
   render() { return (
     <div>
-      <div className="header">
-        <img className="logo" src="/images/linkedUpLogo.png" alt="Logo"/>
-        <div className="what-dis">office crushes are bad</div>
-      </div>
-      <div className="main">
-        <img className="arrows" src="/images/arrows.png" alt="Arrows"/>
+      { this.state.step < this.state.prompts.length ?
         <div>
-          <script type="in/Login"></script>
+          <div>
+            {this.state.prompts[this.state.step]}
+          </div>
+          <button onClick={this.next}>Next</button>
+        </div>
+      : null }
+
+      <div style={{display: this.state.step === this.state.prompts.length ? 'block' : 'none'}}>
+        <div className="header">
+          <img className="logo" src="/images/linkedUpLogo.png" alt="Logo"/>
+          <div className="what-dis">office crushes are bad</div>
+        </div>
+        <div className="main">
+          <img className="arrows" src="/images/arrows.png" alt="Arrows"/>
+          <div>
+            <script type="in/Login"></script>
+          </div>
         </div>
       </div>
     </div>
