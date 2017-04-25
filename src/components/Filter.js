@@ -16,7 +16,9 @@ class Filter extends Component {
     }).map((el) => {
       return el.value
     })
-    console.log(ids)
+
+    this.props.filter(ids)
+    this.props.playGame()
     return false
   }
 
@@ -33,7 +35,12 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-
+    filter: function(ids) {
+      dispatch({type: 'ladder:filter', ids: ids})
+    },
+    playGame: function() {
+      dispatch({type: 'scene:change', scene: 'Game'})
+    },
   }
 }
 

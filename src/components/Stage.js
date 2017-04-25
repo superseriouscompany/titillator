@@ -6,7 +6,7 @@ import Game               from './Game'
 
 class Stage extends Component {
   render() {
-    if( !this.props.authed )
+    if( !this.props.authed)
       return <Login />
     if( !this.props.oriented || this.props.scene === 'Orient' )
       return <Orient />

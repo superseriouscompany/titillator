@@ -79,7 +79,7 @@ function mapDispatchToProps(dispatch) {
   return {
     signin: function(accessToken) {
       dispatch({type: 'profile:linkin', accessToken: accessToken})
-      dispatch({type: 'scene:change', scene: 'Octagon'})
+      dispatch({type: 'scene:change', scene: 'Game'})
     }
   }
 }

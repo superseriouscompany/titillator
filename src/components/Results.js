@@ -31,10 +31,9 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     showGame: function() {
-      console.log('trying to show game')
       dispatch({
         type:  'scene:change',
-        scene: 'Octagon',
+        scene: 'Game',
       })
     }
   }

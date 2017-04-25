@@ -4,6 +4,7 @@ const initialState = {
   round:       0,
   index:       0,
   comparisons: 0,
+  filtered:    false,
 }
 
 export default function people(state = initialState, action) {
@@ -24,6 +25,12 @@ export default function people(state = initialState, action) {
       return {
         ...state,
         players: remove(state.players, action.id),
+      }
+    case 'ladder:filter':
+      return {
+        ...state,
+        players: filter(state.players, action.ids),
+        filtered: true,
       }
     case 'matchup:next':
       const nextMatchup = matchup(state.players, state.round, state.index, state.comparisons)
@@ -115,6 +122,12 @@ function matchup(ladder, round, index, comparisons) {
   }
 
   return people
+}
+
+function filter(players, ids) {
+  return players.filter((p) => {
+    return ids.indexOf(p.id) !== -1
+  })
 }
 
 function remove(players, id) {

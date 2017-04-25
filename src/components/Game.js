@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {connect}          from 'react-redux'
 import Octagon            from './Octagon'
 import Results            from './Results'
+import Filter             from './Filter'
 import api                from '../api'
 
 class Game extends Component {
@@ -15,7 +16,6 @@ class Game extends Component {
     if( this.props.players.length ) {
       this.setState({ready: true})
     } else {
-      console.log('using accessToken', this.props.accessToken)
       api('/coworkers', {
         method: 'GET',
         accessToken: this.props.accessToken,
@@ -76,6 +76,8 @@ class Game extends Component {
     <div className="fullheight">
       { !this.state.ready ?
         <span>Loading...</span>
+      : !this.props.filtered ?
+        <Filter />
       : this.props.scene === 'Results' ?
         <Results />
       :
@@ -95,6 +97,7 @@ function mapStateToProps(state) {
     orientation: state.profile.orientation,
     scene:       state.scene.name,
     accessToken: state.profile.accessToken,
+    filtered:    !!state.matchup.filtered,
   }
 }
 
