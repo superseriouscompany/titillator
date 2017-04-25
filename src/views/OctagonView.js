@@ -1,4 +1,5 @@
 import React from 'react'
+import Tipsy from 'react-tipsy';
 
 export default function(props) {
   return (
@@ -21,18 +22,22 @@ export default function(props) {
               <img src={props.blue.avatarUrl} alt={`%{props.blue.name} on LinkedIn`} className="face" onClick={() => props.choose(props.blue.id, props.red.id)}/>
               <div className="full-name">{props.blue.name}</div>
             </div>
-            <a className="remove" onClick={() => props.remove(props.blue.id)}>
-              <img src="/images/TrashCan.png" alt="Remove coworker"/>
-            </a>
+            <Tipsy content="Remove anyone you don't know." position="bottom" trigger="hover">
+              <a className="remove" onClick={() => props.remove(props.blue.id)}>
+                <img src="/images/TrashCan.png" alt="Remove coworker"/>
+              </a>
+            </Tipsy>
           </div>
           <div className="red corner">
             <div className="card">
               <img src={props.red.avatarUrl} alt={`%{props.red.name} on LinkedIn`} className="face" onClick={() =>  props.choose(props.red.id, props.blue.id)}/>
               <div className="full-name">{props.red.name}</div>
             </div>
-            <a className="remove" onClick={() => props.remove(props.blue.id)}>
-              <img src="/images/TrashCan.png" alt="Remove coworker"/>
-            </a>
+            <Tipsy content="Remove anyone you don't know." position="bottom" trigger="hover">
+              <a className="remove" onClick={() => props.remove(props.red.id)}>
+                <img src="/images/TrashCan.png" alt="Remove coworker"/>
+              </a>
+            </Tipsy>
           </div>
         </div>
       : null }
