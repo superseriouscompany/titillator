@@ -5,6 +5,8 @@ html, body, .fullheight, #root {
 
 .intro { display: flex; justify-content: center; align-items: center; flex-direction: column; cursor: pointer; }
 
+.introImg { max-width: 80%; max-height: 80%; }
+
 /* Orientation */
 .orientContainer { position: absolute; top: 50%; left: 50%; margin-top: -25px; transform: translate(-50%, -50%); }
 .orientButton { height: 100px; width: 200px; text-align: center; margin: 10px; color: white; font-size: 28px; }

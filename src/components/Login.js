@@ -10,10 +10,10 @@ class Login extends Component {
     this.state = {
       step: 0,
       prompts: [
-        'hello',
-        'world',
-        'you',
-        'suck',
+        "/images/LimIsSoAwesomeItsUnbelievable.png",
+        "/images/Intro2.png",
+        "/images/Intro3.png",
+        "/images/Intro4.png",
       ]
     }
   }
@@ -49,9 +49,7 @@ class Login extends Component {
     <div className="fullheight">
       { this.state.step < this.state.prompts.length ?
         <div className="intro fullheight" onClick={this.next}>
-          <div className="text">
-            {this.state.prompts[this.state.step]}
-          </div>
+            <img className="introImg" src={this.state.prompts[this.state.step]} alt="Message"/>
         </div>
       : null }
 
