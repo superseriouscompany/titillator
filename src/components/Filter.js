@@ -58,7 +58,7 @@ class Filter extends Component {
 
 function mapStateToProps(state) {
   return {
-    players: state.matchup.players.sort((a,b) => {
+    players: [].concat(state.matchup.players).sort((a,b) => {
       return a.name.toLowerCase() < b.name.toLowerCase() ? -1 : 1
     }),
   }

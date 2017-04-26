@@ -5,6 +5,8 @@ import Results            from './Results'
 import Filter             from './Filter'
 import api                from '../api'
 
+const finalRound = 3
+
 class Game extends Component {
   constructor(props) {
     super(props)
@@ -41,14 +43,18 @@ class Game extends Component {
     }
   }
 
+  componentDidMount() {
+    if( this.props.round >= finalRound - 2 ) {
+      this.props.visitResults()
+    }
+  }
+
   componentWillReceiveProps(props) {
     if( props.roundOver && !this.props.roundOver) {
       this.saveScores()
-      if( props.round >= props.players.length - 1 ) {
+      if( props.round >= finalRound - 2 ) {
         window.ga('send', 'event', 'round', 'completedAll', 'default', props.round);
-        this.setState({
-          done: true,
-        })
+        this.props.visitResults()
         return
       }
 
@@ -111,7 +117,10 @@ function mapDispatchToProps(dispatch) {
       dispatch({type: 'round:advance'})
       dispatch({type: 'ladder:shuffle'})
       dispatch({type: 'matchup:next'})
-    }
+    },
+    visitResults: function() {
+      dispatch({type: 'scene:change', scene: 'Results'})
+    },
   }
 }
 

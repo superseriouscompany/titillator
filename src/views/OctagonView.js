@@ -4,16 +4,6 @@ export default function(props) {
   return (
     <div className="fullheight octagon-container">
       <div className="roundHeader">
-        { false ?
-          <div>
-            <a onClick={props.reorient}>
-              Reset and Change Gender
-            </a>
-            <a onClick={props.showResults}>
-              Results
-            </a>
-          </div>
-        : null }
         <div className="round">Round</div>
         <div className="roundNumber">{props.round + 1}</div>
       </div>
@@ -23,8 +13,8 @@ export default function(props) {
           <div className="blue corner">
             <div key={props.blue.id} className={[
               "card",
-              props.winner == props.blue.id ? "win" : null,
-              props.loser == props.blue.id ? "loss" : null,
+              props.winner === props.blue.id ? "win" : null,
+              props.loser === props.blue.id ? "loss" : null,
               props.entering ? "enter" : null,
             ].join(' ')}>
               <img src={props.blue.avatarUrl} alt={`%{props.blue.name} on LinkedIn`} className="face" onClick={() => props.choose(props.blue.id, props.red.id)}/>
@@ -34,8 +24,8 @@ export default function(props) {
           <div className="red corner">
             <div key={props.red.id} className={[
               "card",
-              props.winner == props.red.id ? "win" : null,
-              props.loser == props.red.id ? "loss" : null,
+              props.winner === props.red.id ? "win" : null,
+              props.loser === props.red.id ? "loss" : null,
               props.entering ? "enter" : null
             ].join(' ')}>
               <img src={props.red.avatarUrl} alt={`%{props.red.name} on LinkedIn`} className="face" onClick={() =>  props.choose(props.red.id, props.blue.id)}/>
