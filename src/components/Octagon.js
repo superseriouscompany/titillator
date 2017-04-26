@@ -5,20 +5,19 @@ import OctagonView          from '../views/OctagonView'
 class Octagon extends Component {
   constructor(props) {
     super(props)
-    this.keydown    = this.keydown.bind(this)
-    this.choose     = this.choose.bind(this)
-    this.remove     = this.remove.bind(this)
+    this.keydown = this.keydown.bind(this)
+    this.choose  = this.choose.bind(this)
+    this.remove  = this.remove.bind(this)
+    this.state   = { showHint: true }
+
   }
 
   keydown(e) {
-    // TODO: make it work cross browser
     if( e.key === 'ArrowLeft' ) {
-      document.getElementsByClassName('arrowHint')[0].style.display = 'none';
-      document.getElementsByClassName('kanye')[0].style.display = 'block';
+      this.setState({showHint: false})
       this.choose(this.props.blue.id, this.props.red.id)
     } else if( e.key === 'ArrowRight' ) {
-      document.getElementsByClassName('arrowHint')[0].style.display = 'none';
-      document.getElementsByClassName('kanye')[0].style.display = 'block';
+      this.setState({showHint: false})
       this.choose(this.props.red.id, this.props.blue.id)
     }
   }
@@ -48,6 +47,7 @@ class Octagon extends Component {
   render() {
     return (
       <OctagonView {...this.props}
+        showHint={this.state.showHint}
         choose={this.choose}
         remove={this.remove} />
     );

@@ -42,14 +42,18 @@ export default function(props) {
         </div>
       : null }
 
-      <div className="footer">
-        <div className="arrowHint">
-          <img className="arrow" src="/images/leftArrow.png" alt="Left Arrow"/>
-          <img className="arrow" src="/images/rightArrow.png" alt="Right Arrow"/>
-          <div className="kanyeQuote">Ima let you finish but use your arrow keys</div>
+      { props.showHint ?
+        <div className="footer">
+          <div className="arrowHint">
+            <div className="kanyeQuote">
+              psst, choose faster with
+              <span className="key">&larr;</span>
+              <span className="key">&rarr;</span>
+            </div>
+          </div>
+          <img className="kanye" src="/images/Kanye.png" alt="Kanye West's Face"/>
         </div>
-        <img className="kanye" src="/images/Kanye.png" alt="Kanye West's Face"/>
-      </div>
+      : null }
     </div>
   )
 }
