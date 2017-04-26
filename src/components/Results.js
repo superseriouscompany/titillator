@@ -1,10 +1,34 @@
 import React, {Component} from 'react'
 import {connect}          from 'react-redux';
 import ResultsView        from '../views/ResultsView'
+import api                from '../api'
 
-class Result extends Component {
+class Results extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {}
+  }
+
+  componentDidMount() {
+    api('/matches', {
+      method: 'GET',
+      accessToken: this.props.accessToken,
+    }).then((response) => {
+      return response.json()
+    }).then((json) => {
+      this.setState({
+        matchCount: json.count
+      })
+    }).catch((err) => {
+      if( window.location.href.match(/localhost/) ) {
+        alert(err.message || JSON.stringify(err))
+      }
+      console.error(err)
+    })
+  }
+
   render() { return (
-    <ResultsView {...this.props} />
+    <ResultsView {...this.props} matchCount={this.state.matchCount}/>
   )}
 }
 
@@ -24,7 +48,8 @@ function mapStateToProps(state) {
   })
 
   return {
-    tiers: tiers,
+    tiers:       tiers,
+    accessToken: state.profile.accessToken,
   }
 }
 
@@ -39,4 +64,4 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Result);
+export default connect(mapStateToProps, mapDispatchToProps)(Results);

@@ -3,9 +3,15 @@ import React from 'react'
 export default function(props) {
   return (
     <div className="fullheight results-container">
-      <h2 className="keep-playing">
-        <a onClick={props.showGame}>Keep Playing</a>
-      </h2>
+      { props.matchCount ?
+        <h2>
+          You have {props.matchCount} matches.
+        </h2>
+      :
+        <h2>
+          Check back later to see if ???
+        </h2>
+      }
       { props.tiers.map((t, key) => (
         <div className={`tier ${key % 2 ? 'even' : 'odd'}`} key={key}>
           <div className="place">
