@@ -56,7 +56,6 @@ class Login extends Component {
       <div style={{display: this.state.step === this.state.prompts.length ? 'block' : 'none'}}>
         <div className="header">
           <img className="logo" src="/images/linkedUpLogo.png" alt="Logo"/>
-          <div className="what-dis">office crushes are bad</div>
         </div>
         <div className="main">
           <img className="arrows" src="/images/arrows.png" alt="Arrows"/>
