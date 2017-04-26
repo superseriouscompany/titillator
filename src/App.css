@@ -16,8 +16,8 @@ html, body, .fullheight, #root {
 /* Filter */
 .filter {  }
 .filter .explanation { text-align: center; font-size: 40px; margin: .55em 0; }
-.filter .faces { padding: 0 10%; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; }
-.filter .player { position: relative; display: flex; flex-direction: column; justify-content: center; margin: 0 0 1em; width: 19%; overflow: hidden; cursor: pointer; }
+.filter .faces { padding: 0 20%; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; }
+.filter .player { position: relative; display: flex; flex-direction: column; justify-content: center; margin: 0 0 1em; width: 24%; overflow: hidden; cursor: pointer; }
 .filter .player input[type=checkbox]{ display: none }
 .filter .greenCheck { font-size: 24px; display: none }
 .filter .player input:checked + div .greenCheck { display: block; position: absolute; top: 5px; right: 10px; }

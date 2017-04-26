@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import {connect}          from 'react-redux';
 import FilterView       from '../views/FilterView'
 
-const batchSize = 10
+const batchSize = 8
 
 class Filter extends Component {
   constructor(props) {

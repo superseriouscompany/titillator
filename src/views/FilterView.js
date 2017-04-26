@@ -13,7 +13,7 @@ export default function(props) {
             <div>
               <span className="greenCheck">✅</span>
               <img src={p.avatarUrl} alt={p.name} />
-              <span className="text">{p.name}</span>
+              <span className="text">{p.name.split(' ')[0]}</span>
             </div>
           </label>
         ))}

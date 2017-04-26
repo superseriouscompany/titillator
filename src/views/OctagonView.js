@@ -20,7 +20,7 @@ export default function(props) {
           <div className="blue corner">
             <div className="card">
               <img src={props.blue.avatarUrl} alt={`%{props.blue.name} on LinkedIn`} className="face" onClick={() => props.choose(props.blue.id, props.red.id)}/>
-              <div className="full-name">{props.blue.name}</div>
+              <div className="full-name">{props.blue.name.split(' ')[0]}</div>
             </div>
             <Tipsy content="Remove anyone you don't know." position="bottom" trigger="hover">
               <a className="remove" onClick={() => props.remove(props.blue.id)}>
@@ -31,7 +31,7 @@ export default function(props) {
           <div className="red corner">
             <div className="card">
               <img src={props.red.avatarUrl} alt={`%{props.red.name} on LinkedIn`} className="face" onClick={() =>  props.choose(props.red.id, props.blue.id)}/>
-              <div className="full-name">{props.red.name}</div>
+              <div className="full-name">{props.red.name.split(' ')[0]}</div>
             </div>
             <Tipsy content="Remove anyone you don't know." position="bottom" trigger="hover">
               <a className="remove" onClick={() => props.remove(props.red.id)}>
