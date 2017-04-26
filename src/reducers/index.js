@@ -1,5 +1,5 @@
-import {persistStore, autoRehydrate}                   from 'redux-persist'
-import logger                                          from 'redux-logger'
+import {persistStore, autoRehydrate} from 'redux-persist'
+import logger                        from 'redux-logger'
 import {
   applyMiddleware,
   combineReducers,
@@ -24,7 +24,7 @@ const store = createStore(reducers, undefined, compose(
 
 const persistence = persistStore(store, {whitelist: [
   'profile',
-//  'matchup',
+  'matchup',
 ]})
 
 export default store
