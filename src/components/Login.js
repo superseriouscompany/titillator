@@ -10,10 +10,10 @@ class Login extends Component {
     this.state = {
       step: 0,
       prompts: [
-        "/images/LimIsSoAwesomeItsUnbelievable.png",
-        "/images/Intro2.png",
-        "/images/Intro3.png",
-        "/images/Intro4.png",
+        "images/LimIsSoAwesomeItsUnbelievable.png",
+        "images/Intro2.png",
+        "images/Intro3.png",
+        "images/Intro4.png",
       ]
     }
   }
