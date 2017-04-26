@@ -9,7 +9,7 @@ export default function(props) {
         </h2>
       :
         <h2>
-          Check back later to see if ???
+          Matches coming soon...standby
         </h2>
       }
       { props.tiers.map((t, key) => (
