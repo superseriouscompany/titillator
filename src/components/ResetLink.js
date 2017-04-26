@@ -8,7 +8,7 @@ class ResetLink extends Component {
   }
 
   render() { return (
-    <a onClick={this.reset}>
+    <a style={{position: 'absolute', right: 0, top: 0, backgroundColor: 'rgba(0,0,0,0.5)', color: 'white',}} onClick={this.reset}>
       Reset
     </a>
   )}
