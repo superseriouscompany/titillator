@@ -30,47 +30,21 @@ html, body, .fullheight, #root {
 .filter button:hover { background-color: #2576B0; border: white; color: white; }
 .filter button:focus { outline: none; }
 
-/* Octagon */
 .theButton {
   position: absolute
 }
 
+/* Octagon */
+.roundHeader { display: none !important; }
+.roundHeader { display: flex; justify-content: flex-end; padding: 20px; }
+.round { font-family: 'Source Sans Pro', sans-serif; font-weight: bold; font-size: 48px; }
+.roundNumber { display: flex; justify-content: center; align-items: center; font-family: 'Source Sans Pro', sans-serif; font-weight: bold; font-size: 42px; color: white; background: #2576B0; border-radius: 5px; width: 52px; height: 49px; padding-bottom: 3px; margin-top: 5px; margin-left: 8px; }
+
 .octagon-container { display: flex; flex-direction: column; }
+.octagon { display: flex; flex-direction: column; justify-content: center; align-items: center; flex: 1; }
+.cards { display: flex; flex-direction: row; position: relative; }
 
-.octagon { display: flex; flex-direction: column; justify-content: center; align-items: center; flex: 1; margin-top: -100px; }
-.cards { display: flex; flex-direction: row; }
-.octagon .or { font-size: 32px; }
-
-.roundHeader {
-  display: flex;
-  justify-content: flex-end;
-  padding: 20px;
-}
-
-.round {
-  font-family: 'Source Sans Pro', sans-serif;
-  font-weight: bold;
-  font-size: 48px;
-}
-
-.roundNumber {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: 'Source Sans Pro', sans-serif;
-  font-weight: bold;
-  font-size: 42px;
-  color: white;
-  background: #2576B0;
-  border-radius: 5px;
-  width: 52px;
-  height: 49px;
-  padding-bottom: 3px;
-  margin-top: 5px;
-  margin-left: 8px;
-}
-
-.corner { flex: 1; text-align: center; max-width: 400px; max-height: 400px; min-width: 0; margin: 10px; }
+.corner { flex: 1; text-align: center; max-width: 400px; min-width: 0; margin: 10px; }
 .corner:hover { transform: scale(1.03); }
 
 .card { min-width: 0; }

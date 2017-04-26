@@ -4,12 +4,16 @@ export default function(props) {
   return (
     <div className="fullheight octagon-container">
       <div className="roundHeader">
-        <a onClick={props.reorient}>
-          Reset and Change Gender
-        </a>
-        <a onClick={props.showResults}>
-          Results
-        </a>
+        { false ?
+          <div>
+            <a onClick={props.reorient}>
+              Reset and Change Gender
+            </a>
+            <a onClick={props.showResults}>
+              Results
+            </a>
+          </div>
+        : null }
         <div className="round">Round</div>
         <div className="roundNumber">{props.round + 1}</div>
       </div>
@@ -29,9 +33,6 @@ export default function(props) {
                 <div className="full-name">{props.red.name.split(' ')[0]}</div>
               </div>
             </div>
-          </div>
-          <div className="or">
-            or
           </div>
         </div>
       : null }
