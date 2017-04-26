@@ -43,22 +43,15 @@ html, body, .fullheight, #root {
 .octagon-container { display: flex; flex-direction: column; }
 .octagon { display: flex; justify-content: center; align-items: center; flex: 1; }
 
-.corner { flex: 1; text-align: center; max-width: 400px; min-width: 0; margin: 10px; }
-.corner:hover { transform: scale(1.03); }
+.corner { flex: 1; text-align: center; max-width: 400px; min-width: 0; margin: 10px; transition: all 0.3 ease-in-out; }
+.corner:hover { transform: scale(1.05); }
 
 .card { min-width: 0; }
 
 .face { width: 100%; display: block; border-radius: 1em; }
 
-.face:hover {
-  width: 102.5%;
-  margin-top: -1.25%;
-  margin-left: -1.25%;
-}
-
 .blue .face { cursor: url(../public/images/DrakeArrowLeft.png), auto; }
 .red .face { cursor: url(../public/images/DrakeArrowRight.png), auto; }
-
 
 .full-name {
   margin-top: 9px;
@@ -176,35 +169,48 @@ html, body, .fullheight, #root {
 }
 
 .blue .win { animation: leftwin .25s ease-in forwards; }
-.red .loss { animation: rightloss .25s forwards; }
 .red .win { animation: rightwin .25s ease-in forwards; }
-.blue .loss { animation: leftloss .25s forwards; }
 
-.blue .enter { animation: leftloss 1.25s reverse; }
-.red .enter { animation: rightloss 1.25s reverse; }
+.red .loss { animation: rightloss .4s forwards; transform-origin: bottom left }
+.blue .loss { animation: leftloss .4s forwards; transform-origin: bottom right }
+
+.blue .enter { animation: leftenter 1.25s reverse; }
+.red .enter { animation: rightenter 1.25s reverse; }
 
 @keyframes leftwin {
-    0%   {transform: translate(0, 0)}
-    40%   {transform: translate(-50px, 0)}
-    100%  {transform: translate(200px, 0)}
+    0%   {transform: translate(0, 0) }
+    40%   {transform: translate(calc(-25%), 0)}
+    100%  {transform: translate(calc(50%), 0) scale(1.3)}
+}
+
+@keyframes rightwin {
+  0%   {transform: translate(0, 0)}
+  40%   {transform: translate(calc(25%), 0)}
+  100%  {transform: translate(calc(-50%), 0) scale(1.3); }
 }
 
 @keyframes rightloss {
   0%   {transform: translate(0, 0)}
-  68%   {transform: translate(0, 0)}
-  100%  {transform: translate(calc(50vw + 300px), 0)}
+  36%   {transform: translate(0, 0); opacity: 1}
+  100%  {transform: translate(calc(20vw + 100px), 50px) rotate(60deg) scale(0.6); opacity: 0}
 }
 
 @keyframes leftloss {
+  0%   {transform: translate(0, 0)}
+  36%   {transform: translate(0, 0); opacity: 1}
+  100%  {transform: translate(calc(-20vw - 100px), 50px) rotate(-60deg) scale(0.6); opacity: 0}
+}
+
+@keyframes leftenter {
   0%   {transform: translate(0, 0)}
   68%   {transform: translate(0, 0)}
   100%  {transform: translate(calc(-50vw - 300px), 0)}
 }
 
-@keyframes rightwin {
+@keyframes rightenter {
   0%   {transform: translate(0, 0)}
-  40%   {transform: translate(+50px, 0)}
-  100%  {transform: translate(-200px, 0)}
+  68%   {transform: translate(0, 0)}
+  100%  {transform: translate(calc(50vw + 300px), 0)}
 }
 
 @-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }

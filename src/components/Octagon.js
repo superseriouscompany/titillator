@@ -45,7 +45,7 @@ class Octagon extends Component {
 
       setTimeout(() => {
         this.setState({entering: false})
-      }, 500)
+      }, 400)
     }, 500);
   }
 
