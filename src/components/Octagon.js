@@ -40,7 +40,7 @@ class Octagon extends Component {
       this.props.choose(winnerId, loserId)
       this.props.nextMatchup()
       window.ga('send', 'event', 'comparison', 'made');
-    }, 1000);
+    }, 500);
   }
 
   remove(id) {
