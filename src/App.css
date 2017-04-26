@@ -30,22 +30,16 @@ html, body, .fullheight, #root {
 .filter button:hover { background-color: #2576B0; border: white; color: white; }
 .filter button:focus { outline: none; }
 
+/* Octagon */
 .theButton {
   position: absolute
 }
 
-.octagon-container {
-  display:        flex;
-  flex-direction: column;
-}
+.octagon-container { display: flex; flex-direction: column; }
 
-.octagon {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex: 1;
-  margin-top: -100px;
-}
+.octagon { display: flex; flex-direction: column; justify-content: center; align-items: center; flex: 1; margin-top: -100px; }
+.cards { display: flex; flex-direction: row; }
+.octagon .or { font-size: 32px; }
 
 .roundHeader {
   display: flex;
@@ -76,19 +70,12 @@ html, body, .fullheight, #root {
   margin-left: 8px;
 }
 
-.corner { flex: 1; text-align: center; max-width: 400px; max-height: 400px; min-width: 0; }
+.corner { flex: 1; text-align: center; max-width: 400px; max-height: 400px; min-width: 0; margin: 10px; }
 .corner:hover { transform: scale(1.03); }
 
-.card {
-  margin: 10px;
-  min-width: 0;
-}
+.card { min-width: 0; }
 
-.face {
-  width: 100%;
-  display: block;
-  border-radius: 1em;
-}
+.face { width: 100%; display: block; border-radius: 1em; }
 
 .face:hover {
   width: 102.5%;
@@ -112,13 +99,6 @@ html, body, .fullheight, #root {
 
 .corner {
   position: relative;
-}
-
-a.remove { position: absolute; left: -21px; top: -13px; }
-a.remove img { width: 75%; }
-.red a.remove {
-  left: auto;
-  right: -21px;
 }
 
 .header { position: absolute; width: 100%; margin-top: 2em; z-index: 1; }
