@@ -1,9 +1,12 @@
 import React, {Component} from 'react'
 import {connect}          from 'react-redux'
 import api                from '../api'
-import LimIsSoAwesomeItsUnbelievable from '../../images/LimIsSoAwesomeItsUnbelievable.png'
-import Intro2             from '../../images/Intro2.png'
-import Intro3             from '/images/Intro3.png'
+import LimIsSoAwesomeItsUnbelievable from '../../public/images/LimIsSoAwesomeItsUnbelievable.png'
+import Intro2             from '../../public/images/Intro2.png'
+import Intro3             from '../../public/images/Intro3.png'
+import Intro4             from '../../public/images/Intro4.png'
+import LinkedUpLogo       from '../../public/images/linkedUpLogo.png'
+import Arrows             from '../../public/images/arrows.png'
 
 class Login extends Component {
   constructor(props) {
@@ -16,7 +19,7 @@ class Login extends Component {
         LimIsSoAwesomeItsUnbelievable,
         Intro2,
         Intro3,
-        "images/Intro4.png",
+        Intro4,
       ]
     }
   }
@@ -58,10 +61,10 @@ class Login extends Component {
 
       <div style={{display: this.state.step === this.state.prompts.length ? 'block' : 'none'}}>
         <div className="header">
-          <img className="logo" src="images/linkedUpLogo.png" alt="Logo"/>
+          <img className="logo" src={LinkedUpLogo} alt="Logo"/>
         </div>
         <div className="main">
-          <img className="arrows" src="images/arrows.png" alt="Arrows"/>
+          <img className="arrows" src={Arrows} alt="Arrows"/>
           <div>
             <script type="in/Login"></script>
           </div>
