@@ -8,7 +8,7 @@ class Octagon extends Component {
     this.keydown = this.keydown.bind(this)
     this.choose  = this.choose.bind(this)
     this.remove  = this.remove.bind(this)
-    this.state   = { showHint: true }
+    this.state   = { showHint: true, winner: null }
 
   }
 
@@ -34,9 +34,13 @@ class Octagon extends Component {
   }
 
   choose(winnerId, loserId) {
-    this.props.choose(winnerId, loserId)
-    this.props.nextMatchup()
-    window.ga('send', 'event', 'comparison', 'made');
+    this.setState({winner: winnerId, loser: loserId})
+    setTimeout(() => {
+      this.setState({winner: null, loser: null})
+      this.props.choose(winnerId, loserId)
+      this.props.nextMatchup()
+      window.ga('send', 'event', 'comparison', 'made');
+    }, 1000);
   }
 
   remove(id) {
@@ -49,7 +53,9 @@ class Octagon extends Component {
       <OctagonView {...this.props}
         showHint={this.state.showHint}
         choose={this.choose}
-        remove={this.remove} />
+        remove={this.remove}
+        winner={this.state.winner}
+        loser={this.state.loser}/>
     );
   }
 }

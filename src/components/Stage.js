@@ -3,6 +3,7 @@ import {connect}          from 'react-redux'
 import Login              from './Login'
 import Orient             from './Orient'
 import Game               from './Game'
+import Scratch            from './Scratch'
 
 class Stage extends Component {
   render() {

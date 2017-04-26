@@ -167,6 +167,44 @@ html, body, .fullheight, #root {
 .keep-playing   { text-align: center; }
 .keep-playing a { text-decoration: underline; }
 
+.square {
+  height: 400px;
+  width: 400px;
+  background: hotpink;
+}
+
+.heyContainer {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.heyContainer div {
+  margin: 0 1em;
+}
+
+.hey {
+  animation: up 0.25s ease-in forwards;
+}
+
+.bye {
+  animation: down 0.25s forwards;
+}
+
+@keyframes up {
+    0%   {transform: translate(0, 0); opacity: 1 }
+    40%   {transform: translate(0, 50px); opacity: 1 }
+    90% { opacity: 1 }
+    100%  {transform: translate(0, calc(-50vh - 300px)); opacity: 0}
+}
+
+@keyframes down {
+  0%   {transform: translate(0, 0); opacity: 1}
+  40%   {transform: translate(0, -50px); opacity: 1}
+  90% { opacity: 1 }
+  100%  {transform: translate(0, calc(50vh + 300px)); opacity: 0}
+}
 
 @-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
 @-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
