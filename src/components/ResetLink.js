@@ -7,7 +7,11 @@ class ResetLink extends Component {
     window.location.reload()
   }
 
-  render() { return (
+  render() {
+    if( !window.location.href.match(/localhost/) ) {
+      return null
+    }
+      return (
     <a style={{position: 'absolute', right: 0, top: 0, backgroundColor: 'rgba(0,0,0,0.5)', color: 'white',}} onClick={this.reset}>
       Reset
     </a>

@@ -19,8 +19,13 @@ const reducers = combineReducers({
   profile,
 })
 
+const middleware = []
+if( window.location.href.match(/localhost/) ) {
+  middleware.push(logger)
+}
+
 const store = createStore(reducers, undefined, compose(
-  applyMiddleware(logger),
+  applyMiddleware(...middleware),
   autoRehydrate()
 ))
 
