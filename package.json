@@ -2,7 +2,7 @@
   "name": "titillator",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://superseriouscompany.github.io/titillator",
+  "homepage": "https://linkedup.co",
   "repository": "https://github.com/superseriouscompany/titillator.git",
   "dependencies": {
     "react": "^15.5.4",
