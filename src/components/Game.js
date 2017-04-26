@@ -5,7 +5,7 @@ import Results            from './Results'
 import Filter             from './Filter'
 import api                from '../api'
 
-const finalRound = 7
+const finalRound = 10
 
 class Game extends Component {
   constructor(props) {

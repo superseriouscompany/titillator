@@ -51,10 +51,18 @@ export default function people(state = initialState, action) {
         round:       state.round + 1,
         index:       0,
         comparisons: 0,
+        players: state.round >= 2 ? cull(state.players) : state.players
       }
     default:
       return state;
   }
+}
+
+function cull(players) {
+  alert('culled')
+  return players.filter((p) => {
+    return p.losses.length < 3
+  })
 }
 
 function matchup(ladder, round, index, comparisons) {
