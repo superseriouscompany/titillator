@@ -5,8 +5,8 @@ import LimIsSoAwesomeItsUnbelievable from '../../public/images/LimIsSoAwesomeIts
 import Intro2             from '../../public/images/Intro2.png'
 import Intro3             from '../../public/images/Intro3.png'
 import Intro4             from '../../public/images/Intro4.png'
-import LinkedUpLogo       from '../../public/images/linkedUpLogo.png'
-import Arrows             from '../../public/images/arrows.png'
+import LinkedUpLogo       from '../../public/images/LinkedUpLogo.png'
+import Arrows             from '../../public/images/Arrows.png'
 
 class Login extends Component {
   constructor(props) {
