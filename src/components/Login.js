@@ -1,6 +1,9 @@
 import React, {Component} from 'react'
 import {connect}          from 'react-redux'
 import api                from '../api'
+import LimIsSoAwesomeItsUnbelievable from './images/LimIsSoAwesomeItsUnbelievable.png'
+import Intro2             from '../../images/Intro2.png'
+import Intro3             from '/images/Intro3.png'
 
 class Login extends Component {
   constructor(props) {
@@ -10,9 +13,9 @@ class Login extends Component {
     this.state = {
       step: 0,
       prompts: [
-        "images/LimIsSoAwesomeItsUnbelievable.png",
-        "images/Intro2.png",
-        "images/Intro3.png",
+        LimIsSoAwesomeItsUnbelievable,
+        Intro2,
+        Intro3,
         "images/Intro4.png",
       ]
     }
