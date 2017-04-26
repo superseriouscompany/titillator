@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {connect}          from 'react-redux'
 import api                from '../api'
-import LimIsSoAwesomeItsUnbelievable from './images/LimIsSoAwesomeItsUnbelievable.png'
+import LimIsSoAwesomeItsUnbelievable from '../../images/LimIsSoAwesomeItsUnbelievable.png'
 import Intro2             from '../../images/Intro2.png'
 import Intro3             from '/images/Intro3.png'
 
