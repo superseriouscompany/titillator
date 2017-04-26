@@ -1,4 +1,4 @@
-const baseUrl = window.location.href.match(/localhost/) ? 'http://localhost:3001' : 'https://titillator.superserious.co'
+const baseUrl = window.location.href.match(/localhost/) ? 'http://localhost:3001' : 'https://api.linkedup.co'
 
 export default function api(path, options) {
   if( path[0] !== '/' ) path = `/${path}`
