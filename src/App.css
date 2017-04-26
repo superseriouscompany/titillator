@@ -189,9 +189,8 @@ html, body, .fullheight, #root {
 .red .win { animation: rightwin .25s ease-in forwards; }
 .blue .loss { animation: leftloss .25s forwards; }
 
-.bye {
-  animation: down .25s forwards;
-}
+.blue .enter { animation: leftloss 1.25s reverse; }
+.red .enter { animation: rightloss 1.25s reverse; }
 
 @keyframes leftwin {
     0%   {transform: translate(0, 0)}
