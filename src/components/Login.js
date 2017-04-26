@@ -55,10 +55,10 @@ class Login extends Component {
 
       <div style={{display: this.state.step === this.state.prompts.length ? 'block' : 'none'}}>
         <div className="header">
-          <img className="logo" src="/images/linkedUpLogo.png" alt="Logo"/>
+          <img className="logo" src="images/linkedUpLogo.png" alt="Logo"/>
         </div>
         <div className="main">
-          <img className="arrows" src="/images/arrows.png" alt="Arrows"/>
+          <img className="arrows" src="images/arrows.png" alt="Arrows"/>
           <div>
             <script type="in/Login"></script>
           </div>

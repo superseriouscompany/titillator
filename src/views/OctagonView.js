@@ -44,7 +44,6 @@ export default function(props) {
               <span className="key">&rarr;</span>
             </div>
           </div>
-          <img className="kanye" src="/images/Kanye.png" alt="Kanye West's Face"/>
         </div>
       : null }
     </div>
