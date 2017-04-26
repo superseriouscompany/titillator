@@ -19,7 +19,7 @@ export default function(props) {
         ))}
       </div>
       <div className="button-container">
-        <button>{props.count || 0} Selected &rarr;</button>
+        <button>{props.count || 0 + props.ids.length || 0} Selected &rarr;</button>
       </div>
     </form>
   )

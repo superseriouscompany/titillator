@@ -37,7 +37,7 @@ class Filter extends Component {
 
     const combinedIds = this.state.ids.concat(ids)
 
-    if( (this.state.batch + 1) * batchSize > this.props.players.length ) {
+    if( (this.state.batch + 1) * batchSize >= this.props.players.length ) {
       this.props.filter(combinedIds)
       this.props.playGame()
     }
@@ -52,6 +52,7 @@ class Filter extends Component {
       batchSize={batchSize}
       submit={this.submit}
       change={this.change}
+      ids={this.state.ids}
       count={this.state.count}/>
   )}
 }
