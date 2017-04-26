@@ -14,15 +14,21 @@ html, body, .fullheight, #root {
 .orientButton:hover { transform: scale(1.1) }
 
 /* Filter */
-.filter { display: flex; flex-wrap: wrap; }
-.filter .player { position: relative; display: flex; flex-direction: column; justify-content: center; margin: 1em 0; margin-right: 10%; width: 15%; overflow: hidden; }
+.filter {  }
+.filter .explanation { text-align: center; font-size: 40px; margin: .55em 0; }
+.filter .faces { padding: 0 10%; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; }
+.filter .player { position: relative; display: flex; flex-direction: column; justify-content: center; margin: 0 0 1em; width: 19%; overflow: hidden; cursor: pointer; }
 .filter .player input[type=checkbox]{ display: none }
 .filter .greenCheck { font-size: 24px; display: none }
 .filter .player input:checked + div .greenCheck { display: block; position: absolute; top: 5px; right: 10px; }
 .filter .player input:checked + div img { opacity: 1; }
 .filter .player img { width: 100%; opacity: 0.5; border-radius: 3px; user-drag: none; user-select: none; -moz-user-select: none; -webkit-user-drag: none; -webkit-user-select: none; -ms-user-select: none; }
-.filter .player .text { display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-size: 12px; text-align: center; }
+.filter .player .text { display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-size: 16px; text-align: center; user-drag: none; user-select: none; -moz-user-select: none; -webkit-user-drag: none; -webkit-user-select: none; -ms-user-select: none; }
 .filter .player input:checked + img + .text { text-decoration: none; }
+.filter .button-container { text-align: center; }
+.filter button { background-color: white; color: #2576B0; border: 1px solid #2576B0; font-size: 16px; padding: 1em 2em; border-radius:5px; cursor: pointer; }
+.filter button:hover { background-color: #2576B0; border: white; color: white; }
+.filter button:focus { outline: none; }
 
 .theButton {
   position: absolute
