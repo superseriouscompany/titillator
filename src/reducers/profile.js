@@ -16,11 +16,6 @@ export default function(state=initialState, action) {
         ...state,
         orientation: action.orientation,
       }
-    case 'profile:setStranger':
-      return {
-        ...state,
-        randos: [].concat(state.randos, action.rando)
-      }
     default:
       return state
   }

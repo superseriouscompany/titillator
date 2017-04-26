@@ -6,6 +6,8 @@ import Game               from './Game'
 
 class Stage extends Component {
   render() {
+    if( !this.props.hydrated )
+      return <div className="nope"></div>
     if( !this.props.authed)
       return <Login />
     if( !this.props.oriented || this.props.scene === 'Orient' )
@@ -19,6 +21,7 @@ function mapStateToProps(state) {
     scene:    state.scene.name,
     authed:   !!state.profile.accessToken,
     oriented: !!state.profile.orientation,
+    hydrated: !!state.hydration,
   }
 }
 

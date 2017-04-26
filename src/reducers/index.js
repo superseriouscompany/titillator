@@ -1,5 +1,5 @@
-import {persistStore, autoRehydrate}                   from 'redux-persist'
-import logger                                          from 'redux-logger'
+import {persistStore, autoRehydrate} from 'redux-persist'
+import logger                        from 'redux-logger'
 import {
   applyMiddleware,
   combineReducers,
@@ -7,11 +7,13 @@ import {
   createStore,
 } from 'redux'
 
-import matchup from './matchup'
-import scene   from './scene'
-import profile from './profile'
+import matchup   from './matchup'
+import scene     from './scene'
+import profile   from './profile'
+import hydration from './hydration'
 
 const reducers = combineReducers({
+  hydration,
   matchup,
   scene,
   profile,
