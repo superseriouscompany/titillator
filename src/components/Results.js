@@ -7,6 +7,7 @@ class Results extends Component {
   constructor(props) {
     super(props)
     this.state = {}
+    this.reveal = this.reveal.bind(this)
   }
 
   componentDidMount() {
@@ -33,8 +34,25 @@ class Results extends Component {
   }
 
   render() { return (
-    <ResultsView {...this.props} matchCount={this.state.matchCount}/>
+    <ResultsView {...this.props} matchCount={this.state.matchCount} reveal={this.reveal} match={this.state.match}/>
   )}
+
+  reveal() {
+    api('/matches/reveal', {
+      method: 'POST',
+      accessToken: this.props.accessToken,
+    }).then((response) => {
+      return response.json()
+    }).then((json) => {
+      console.log(json);
+      this.setState({ match: json.match })
+    }).catch((err) => {
+      if( window.location.href.match(/localhost/) ) {
+        alert(err.message || JSON.stringify(err))
+      }
+      console.error(err)
+    })
+  }
 }
 
 function mapStateToProps(state) {

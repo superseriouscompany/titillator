@@ -11,7 +11,9 @@ export default function(props) {
 
       { props.matchCount ?
         <h2>
-          You have {props.matchCount} matches.
+          You have {props.matchCount} { props.matchCount === 1 ? "match" : "matches"}!<br/>
+          <a onClick={props.reveal}>get it</a>
+          { props.match ? props.match.name : ' nada'}
         </h2>
       :
         <h2>
