@@ -8,6 +8,7 @@ class Results extends Component {
     super(props)
     this.state = {}
     this.reveal = this.reveal.bind(this)
+    this.onToken = this.onToken.bind(this)
   }
 
   componentDidMount() {
@@ -34,7 +35,7 @@ class Results extends Component {
   }
 
   render() { return (
-    <ResultsView {...this.props} matchCount={this.state.matchCount} reveal={this.reveal} match={this.state.match}/>
+    <ResultsView {...this.props} matchCount={this.state.matchCount} reveal={this.reveal} match={this.state.match} onToken={this.onToken}/>
   )}
 
   reveal() {
@@ -44,7 +45,23 @@ class Results extends Component {
     }).then((response) => {
       return response.json()
     }).then((json) => {
-      console.log(json);
+      this.setState({ match: json.match })
+    }).catch((err) => {
+      if( window.location.href.match(/localhost/) ) {
+        alert(err.message || JSON.stringify(err))
+      }
+      console.error(err)
+    })
+  }
+
+  onToken(token) {
+    api('/matches/reveal', {
+      method: 'POST',
+      accessToken: this.props.accessToken,
+      body: { stripe_token: token.id }
+    }).then((response) => {
+      return response.json()
+    }).then((json) => {
       this.setState({ match: json.match })
     }).catch((err) => {
       if( window.location.href.match(/localhost/) ) {

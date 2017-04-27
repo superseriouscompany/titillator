@@ -1,4 +1,5 @@
 import React from 'react'
+import StripeCheckout from 'react-stripe-checkout'
 
 export default function(props) {
   return (
@@ -13,6 +14,15 @@ export default function(props) {
         <h2>
           You have {props.matchCount} { props.matchCount === 1 ? "match" : "matches"}!<br/>
           <a onClick={props.reveal}>get it</a>
+          <StripeCheckout
+            token={props.onToken}
+            stripeKey="pk_test_mmQIM1nxdtJu1AymtDN9nBCo"
+            name="Super Serious Company"
+            description="Help."
+            panelLabel="Lose"
+            amount={999}>
+            <button className="pay">help.</button>
+          </StripeCheckout>
           { props.match ? props.match.name : ' nada'}
         </h2>
       :
