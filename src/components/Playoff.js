@@ -9,6 +9,10 @@ class Playoff extends Component {
     this.submit = this.submit.bind(this)
   }
 
+  componentDidMount() {
+    this.props.setMiddle(this.props.players)
+  }
+
   render() { return (
     <PlayoffView {...this.props} change={this.change} submit={this.submit} />
   )}
@@ -44,6 +48,9 @@ function mapDispatchToProps(dispatch) {
     },
     visitGame: function() {
       dispatch({type: 'scene:change', scene: 'Octagon'})
+    },
+    setMiddle: function (players) {
+      dispatch({type: 'list:middle', middle: players})
     }
   }
 }

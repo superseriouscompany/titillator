@@ -11,12 +11,14 @@ import matchup   from './matchup'
 import scene     from './scene'
 import profile   from './profile'
 import hydration from './hydration'
+import list      from './list'
 
 const reducers = combineReducers({
   hydration,
   matchup,
   scene,
   profile,
+  list,
 })
 
 const middleware = []
