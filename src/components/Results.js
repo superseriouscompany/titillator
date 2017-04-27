@@ -10,6 +10,11 @@ class Results extends Component {
   }
 
   componentDidMount() {
+    this.props.storeResults(
+      this.props.orientation === 'M' ? 'male' : 'female',
+      this.props.top.concat(this.props.list),
+    )
+
     api('/matches', {
       method: 'GET',
       accessToken: this.props.accessToken,
@@ -54,6 +59,7 @@ function mapStateToProps(state) {
     list:        players.slice(10),
     tiers:       tiers,
     accessToken: state.profile.accessToken,
+    orientation: state.profile.orientation,
   }
 }
 
@@ -64,7 +70,13 @@ function mapDispatchToProps(dispatch) {
         type:  'scene:change',
         scene: 'Game',
       })
-    }
+    },
+    storeResults: function(gender, results) {
+      dispatch({
+        type:  `results:${gender}`,
+        results: results,
+      })
+    },
   }
 }
 

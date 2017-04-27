@@ -12,6 +12,7 @@ import scene     from './scene'
 import profile   from './profile'
 import hydration from './hydration'
 import list      from './list'
+import results   from './results'
 
 const reducers = combineReducers({
   hydration,
@@ -19,6 +20,7 @@ const reducers = combineReducers({
   scene,
   profile,
   list,
+  results,
 })
 
 const middleware = []
