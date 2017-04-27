@@ -3,6 +3,8 @@ import React from 'react'
 export default function(props) {
   return (
     <div className="fullheight results-container">
+      <a onClick={props.changeOrientation}>Switch Teams</a>
+
       { props.matchCount ?
         <h2>
           You have {props.matchCount} matches.

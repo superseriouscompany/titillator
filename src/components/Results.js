@@ -77,6 +77,12 @@ function mapDispatchToProps(dispatch) {
         results: results,
       })
     },
+    changeOrientation: function() {
+      dispatch({
+        type:  'scene:change',
+        scene: 'Orient',
+      })
+    }
   }
 }
 
