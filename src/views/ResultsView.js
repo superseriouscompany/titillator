@@ -4,14 +4,6 @@ import StripeCheckout from 'react-stripe-checkout'
 export default function(props) {
   return (
     <div className="fullheight results-container">
-      { props.hasOtherResults ?
-        <div>Ya done.</div>
-      :
-        <div className="button-container">
-          <a className="button" onClick={() => props.changeOrientation(props.orientation === 'M' ? 'F' : 'M')}>Rank the other gender</a>
-        </div>
-      }
-
       { props.matchCount ?
         <h2>
           You have {props.matchCount} { props.matchCount === 1 ? "match" : "matches"}!<br/>
@@ -25,8 +17,12 @@ export default function(props) {
             <button className="pay">Find you who liked you back</button>
           </StripeCheckout>
         </h2>
+      : props.noMatches ?
+        <h2>
+          You did it! Send this link to your friends before HR takes it down: <a href="https://linkedup.co" target="_blank">https://linkedup.co</a>
+        </h2>
       :
-        null
+        <h2>Loading...</h2>
       }
 
       { props.men.length ?
@@ -36,6 +32,10 @@ export default function(props) {
       { props.women.length ?
         <List list={props.women} revealed={props.revealed} gender="f"/>
       : null }
+
+      <h5>
+        Check back here for juicy updates ;)
+      </h5>
     </div>
   )
 }

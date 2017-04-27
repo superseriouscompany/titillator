@@ -28,6 +28,7 @@ class Results extends Component {
       this.setState({
         matchCount: json.count,
         revealed: json.revealed,
+        noMatches: !!json.count,
       })
     }).catch((err) => {
       if( window.location.href.match(/localhost/) ) {
@@ -44,7 +45,8 @@ class Results extends Component {
       reveal={this.reveal}
       match={this.state.match}
       onToken={this.onToken}
-      revealed={this.state.revealed}/>
+      revealed={this.state.revealed}
+      noMatches={this.state.noMatches}/>
   )}
 
   reveal() {

@@ -52,6 +52,9 @@ html, body, .fullheight, #root {
 .blue .face { cursor: url(../public/images/DrakeArrowLeft.png), auto; }
 .red .face { cursor: url(../public/images/DrakeArrowRight.png), auto; }
 
+/* Results */
+.results-container .list { font-size: 1.5em; }
+
 .full-name {
   margin-top: 9px;
   min-width: 0;
