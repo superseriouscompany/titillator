@@ -32,6 +32,12 @@ export default function people(state = initialState, action) {
         players: filter(state.players, action.ids),
         filtered: true,
       }
+    case 'ladder:playoff':
+      return {
+        ...state,
+        players: addToPlayoffs(filter(state.players, action.ids)),
+        playoff: true
+      }
     case 'matchup:next':
       const nextMatchup = matchup(state.players, state.round, state.index, state.comparisons)
       return {
@@ -185,4 +191,16 @@ function shuffle(arr) {
   }
 
   return array;
+}
+
+function addToPlayoffs(players) {
+  return players.map((p) => {
+    p.regularSeasonWins = [].concat(p.wins)
+    p.regularSeasonLosses = [].concat(p.losses)
+    p.regularSeasonVotes = p.votes
+    p.wins = []
+    p.losses = []
+    p.votes = 0
+    return p
+  })
 }

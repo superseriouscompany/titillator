@@ -27,6 +27,7 @@ class Playoff extends Component {
     })
 
     this.props.filter(ids)
+    this.props.visitGame()
   }
 }
 
@@ -38,8 +39,11 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    filter: function (ids) {
-      dispatch({type: 'ladder:filter', ids: ids})
+    filter: function(ids) {
+      dispatch({type: 'ladder:playoff', ids: ids})
+    },
+    visitGame: function() {
+      dispatch({type: 'scene:change', scene: 'Octagon'})
     }
   }
 }
