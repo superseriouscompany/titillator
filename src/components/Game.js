@@ -11,35 +11,15 @@ class Game extends Component {
   constructor(props) {
     super(props)
     this.state = {}
-    this.saveScores = this.saveScores.bind(this)
+    this.saveScores  = this.saveScores.bind(this)
+    this.loadPlayers = this.loadPlayers.bind(this)
   }
 
   componentWillMount() {
     if( this.props.players.length ) {
       this.setState({ready: true})
     } else {
-      api('/coworkers', {
-        method: 'GET',
-        accessToken: this.props.accessToken,
-      }).then((response) => {
-        return response.json()
-      }).then((json) => {
-        const players = json.users.filter((p) => {
-          return p.gender === this.props.orientation
-        }).map((p) => {
-          p.votes  = 0
-          p.wins   = []
-          p.losses = []
-          return p
-        })
-        this.props.loadLadder(players)
-        this.setState({ready: true})
-      }).catch((err) => {
-        if( window.location.href.match(/localhost/) ) {
-          alert(err.message || JSON.stringify(err))
-        }
-        console.error(err)
-      })
+      this.loadPlayers()
     }
   }
 
@@ -61,6 +41,11 @@ class Game extends Component {
       window.ga('send', 'event', 'round', 'completed', 'default', props.round);
       this.props.advance()
     }
+
+    if( props.orientation != this.props.orientation ) {
+      this.setState({ready: false})
+      this.loadPlayers()
+    }
   }
 
   saveScores() {
@@ -70,6 +55,31 @@ class Game extends Component {
       body: {
         ladder: this.props.players.map((p) => { return [p.id, p.wins.length, p.losses.length]})
       },
+    }).catch((err) => {
+      if( window.location.href.match(/localhost/) ) {
+        alert(err.message || JSON.stringify(err))
+      }
+      console.error(err)
+    })
+  }
+
+  loadPlayers() {
+    api('/coworkers', {
+      method: 'GET',
+      accessToken: this.props.accessToken,
+    }).then((response) => {
+      return response.json()
+    }).then((json) => {
+      const players = json.users.filter((p) => {
+        return p.gender === this.props.orientation
+      }).map((p) => {
+        p.votes  = 0
+        p.wins   = []
+        p.losses = []
+        return p
+      })
+      this.props.loadLadder(players)
+      this.setState({ready: true})
     }).catch((err) => {
       if( window.location.href.match(/localhost/) ) {
         alert(err.message || JSON.stringify(err))

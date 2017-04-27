@@ -21,11 +21,12 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
+    // TODO: put in an action
     orient: function(gender) {
       window.ga('send', 'event', 'orientation', 'selected', gender);
+      dispatch({type: 'ladder:reset'})
       dispatch({type: 'profile:orient', orientation: gender})
       dispatch({type: 'scene:change', scene: 'Game'})
-      dispatch({type: 'ladder:reset'})
     }
   }
 }

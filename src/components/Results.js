@@ -82,12 +82,12 @@ function mapDispatchToProps(dispatch) {
         results: results,
       })
     },
-    changeOrientation: function() {
-      dispatch({
-        type:  'scene:change',
-        scene: 'Orient',
-      })
-    }
+    changeOrientation: function(gender) {
+      window.ga('send', 'event', 'orientation', 'selected', gender);
+      dispatch({type: 'profile:orient', orientation: gender})
+      dispatch({type: 'scene:change', scene: 'Game'})
+      dispatch({type: 'ladder:reset'})
+    },
   }
 }
 

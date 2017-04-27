@@ -6,7 +6,7 @@ export default function(props) {
       { props.hasOtherResults ?
         <div>Ya done.</div>
       :
-        <a onClick={props.changeOrientation}>Switch Teams</a>
+        <a onClick={() => props.changeOrientation(props.orientation === 'M' ? 'F' : 'M')}>Switch Teams</a>
       }
 
       { props.matchCount ?
