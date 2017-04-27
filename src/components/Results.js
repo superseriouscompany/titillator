@@ -6,7 +6,9 @@ import api                from '../api'
 class Results extends Component {
   constructor(props) {
     super(props)
-    this.state = {}
+    this.state = {
+      matchCount: 0
+    }
     this.reveal = this.reveal.bind(this)
     this.onToken = this.onToken.bind(this)
   }
@@ -24,7 +26,8 @@ class Results extends Component {
       return response.json()
     }).then((json) => {
       this.setState({
-        matchCount: json.count
+        matchCount: json.count,
+        revealed: json.revealed,
       })
     }).catch((err) => {
       if( window.location.href.match(/localhost/) ) {
@@ -35,7 +38,13 @@ class Results extends Component {
   }
 
   render() { return (
-    <ResultsView {...this.props} matchCount={this.state.matchCount} reveal={this.reveal} match={this.state.match} onToken={this.onToken}/>
+    <ResultsView {...this.props}
+      stripeKey={window.location.href.match(/localhost/) ? "pk_test_mmQIM1nxdtJu1AymtDN9nBCo" : "pk_live_qNUIQSZrsdKDscelF46J10pD"}
+      matchCount={this.state.matchCount - (this.state.revealed || []).length}
+      reveal={this.reveal}
+      match={this.state.match}
+      onToken={this.onToken}
+      revealed={this.state.revealed}/>
   )}
 
   reveal() {

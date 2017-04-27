@@ -7,70 +7,35 @@ export default function(props) {
       { props.hasOtherResults ?
         <div>Ya done.</div>
       :
-        <a onClick={() => props.changeOrientation(props.orientation === 'M' ? 'F' : 'M')}>Switch Teams</a>
+        <div className="button-container">
+          <a className="button" onClick={() => props.changeOrientation(props.orientation === 'M' ? 'F' : 'M')}>Rank the other gender</a>
+        </div>
       }
 
       { props.matchCount ?
         <h2>
           You have {props.matchCount} { props.matchCount === 1 ? "match" : "matches"}!<br/>
-          <a onClick={props.reveal}>get it</a>
           <StripeCheckout
             token={props.onToken}
-            stripeKey="pk_test_mmQIM1nxdtJu1AymtDN9nBCo"
-            name="Super Serious Company"
-            description="Help."
-            panelLabel="Lose"
-            amount={999}>
-            <button className="pay">help.</button>
+            stripeKey={props.stripeKey}
+            name="Somebody likes you back!"
+            description="💘 💘 💘 💘 💘 💘 💘 💘 💘 💘 💘 💘"
+            panelLabel="🕵️ find out who"
+            amount={1999}>
+            <button className="pay">Find you who liked you back</button>
           </StripeCheckout>
-          { props.match ? props.match.name : ' nada'}
         </h2>
       :
-        <h2>
-          Matches coming soon...standby
-        </h2>
+        null
       }
 
       { props.men.length ?
-        <List list={props.men} />
+        <List list={props.men} revealed={props.revealed} gender="m"/>
       : null }
 
       { props.women.length ?
-        <List list={props.women} />
+        <List list={props.women} revealed={props.revealed} gender="f"/>
       : null }
-
-      { props.tiers.map((t, key) => (
-        <div className={`tier ${key % 2 ? 'even' : 'odd'}`} key={key}>
-          <div className="place">
-            { key === 0 ?
-              <span>🥇</span>
-            : key === 1 ?
-              <span>🥈</span>
-            : key === 2 ?
-              <span>🥉</span>
-            : key === props.tiers.length - 1 ?
-              <span>💩</span>
-            : key === props.tiers.length - 2 ?
-              <span>🙄</span>
-            : key === props.tiers.length - 3 ?
-              <span>😬</span>
-            : key < props.tiers.length / 2 ?
-              <span>🆒</span>
-            :
-              <span>🆗</span>
-            }
-          </div>
-          <div className="members">
-            { t.map((p, key) => (
-              <div className="member" key={key}>
-                <img src={p.avatarUrl} alt={`%{p.name} on linkedin`} />
-                {p.name}
-              </div>
-            ))}
-          </div>
-        </div>
-      ))}
-
     </div>
   )
 }
@@ -78,7 +43,8 @@ export default function(props) {
 function List(props) {
   return (
     <div className="list">
-      <div>〰️〰️ Top Ten 〰️〰️</div>
+      <div>
+        {props.gender === 'f' ? '🍑' : '🍆'}〰️〰️ Top 10 〰️〰️{props.gender === 'f' ? '🍑' : '🍆'}</div>
       { props.list.slice(0, 10).map((t, key) => (
         <div key={key}>
           { key === 0 ?
@@ -91,9 +57,14 @@ function List(props) {
             <span>🎖️  </span>
           }
           {t.name}
+          {
+            (props.revealed || []).find((p) => { return p.id === t.id }) ?
+              <span>  ❤️s you back!</span>
+            : null
+          }
         </div>
       ))}
-      <div>〰️〰️〰️〰️〰️〰️〰️〰️〰️</div>
+      <div>{props.gender === 'f' ? '🍑' : '🍆'}〰️〰️〰️〰️〰️〰️〰️〰️{props.gender === 'f' ? '🍑' : '🍆'}</div>
       { props.list.slice(10).map((t, key) => (
         <div key={key}>
           { key === props.list.length - 1 ?
