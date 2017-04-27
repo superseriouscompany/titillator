@@ -4,7 +4,7 @@ import {connect}          from 'react-redux'
 class Orient extends Component {
   render() { return (
     <div className="orientContainer fullheight">
-      <div className="orientDesc">who do you want to play with first?</div>
+      <div className="orientDesc">who do you want to play with?</div>
       <div className="orientButtons">
         <button className="orientButton men" onClick={() => this.props.orient('M')}>🍆</button>
         <button className="orientButton women" onClick={() => this.props.orient('F')}>🍑</button>

@@ -94,11 +94,13 @@ function mapDispatchToProps(dispatch) {
 
 function mapStateToProps(state) {
   return {
-    red:         state.matchup.red,
-    blue:        state.matchup.blue,
-    round:       state.matchup.round,
-    accessToken: state.profile.accessToken,
-    ladder:      state.matchup.players,
+    red:           state.matchup.red,
+    blue:          state.matchup.blue,
+    round:         state.matchup.round,
+    accessToken:   state.profile.accessToken,
+    ladder:        state.matchup.players,
+    progress:      state.matchup.comparisons / (state.matchup.players.length / 2),
+    roundProgress: state.matchup.round / 7,
   }
 }
 

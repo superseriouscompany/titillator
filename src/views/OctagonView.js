@@ -3,9 +3,13 @@ import React from 'react'
 export default function(props) {
   return (
     <div className="fullheight octagon-container">
+      <div className="progress-bar" style={{width: `${props.progress * 100}%`}}></div>
       <div className="roundHeader">
         <div className="round">Round</div>
-        <div className="roundNumber">{props.round + 1}</div>
+        <div className="roundNumber">
+          {props.round + 1}
+        </div>
+        <div className="round">&nbsp;/ 7</div>
       </div>
 
       { !!props.blue || !!props.red ?

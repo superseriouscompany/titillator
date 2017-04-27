@@ -38,6 +38,8 @@ html, body, .fullheight, #root {
 .roundHeader { display: flex; justify-content: flex-end; padding: 20px; position: absolute; top: 0; z-index: -1; width: 100%; box-sizing: border-box; }
 .round { font-family: 'Source Sans Pro', sans-serif; font-weight: bold; font-size: 48px; }
 .roundNumber { display: flex; justify-content: center; align-items: center; font-family: 'Source Sans Pro', sans-serif; font-weight: bold; font-size: 42px; color: white; background: #2576B0; border-radius: 5px; width: 52px; height: 49px; padding-bottom: 3px; margin-top: 5px; margin-left: 8px; }
+.roundHeader .total { text-align: center; }
+.progress-bar { height: 5px; background-color: #2576B0; position: absolute; top: 0; left: 0; transition: width 250ms; }
 
 .octagon-container { display: flex; flex-direction: column; }
 .octagon { display: flex; justify-content: center; align-items: center; flex: 1; }
