@@ -15,6 +15,14 @@ class Filter extends Component {
     }
   }
 
+  componentDidMount() {
+    const ids = this.props.players.slice(0, 8).map((p) => {
+      return p.id
+    })
+    this.props.filter(ids)
+    this.props.playGame()
+  }
+
   change() {
     const checkboxes = Array.prototype.slice.call(document.querySelector('form')['checked[]']);
     const count = checkboxes.filter((el) => {

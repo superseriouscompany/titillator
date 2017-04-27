@@ -1,6 +1,7 @@
 const initialState = {
   players:     [],
   // TODO: break into separate reducers
+  maxRounds:   7,
   round:       0,
   index:       0,
   comparisons: 0,
@@ -50,6 +51,11 @@ export default function people(state = initialState, action) {
         ...state,
         comparisons: state.comparisons + 1,
         players: players,
+      }
+    case 'round:max':
+      return {
+        ...state,
+        maxRounds: action.maxRounds,
       }
     case 'round:advance':
       return {

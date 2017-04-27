@@ -3,9 +3,8 @@ import {connect}          from 'react-redux'
 import Octagon            from './Octagon'
 import Results            from './Results'
 import Filter             from './Filter'
+import Playoff            from './Playoff'
 import api                from '../api'
-
-const finalRound = 7
 
 class Game extends Component {
   constructor(props) {
@@ -44,7 +43,7 @@ class Game extends Component {
   }
 
   componentDidMount() {
-    if( this.props.round >= finalRound - 2 ) {
+    if( this.props.round >= this.props.maxRound - 2 ) {
       this.props.visitResults()
     }
   }
@@ -52,8 +51,12 @@ class Game extends Component {
   componentWillReceiveProps(props) {
     if( props.roundOver && !this.props.roundOver) {
       this.saveScores()
-      if( props.round >= finalRound - 2 ) {
+      if( props.round >= this.props.maxRound - 2 ) {
         window.ga('send', 'event', 'round', 'completedAll', 'default', props.round);
+        if( this.props.playoffs ) {
+          window.ga('send', 'event', 'round', 'completedPlayoffs', 'default', props.round);
+          return console.log('Send to results');
+        }
         this.props.visitResults()
         return
       }
@@ -86,6 +89,8 @@ class Game extends Component {
         <Filter />
       : this.props.scene === 'Results' ?
         <Results />
+      : this.props.scene === 'Playoff' ?
+        <Playoff />
       :
         <div className="fullheight">
           <Octagon />
@@ -104,6 +109,8 @@ function mapStateToProps(state) {
     scene:       state.scene.name,
     accessToken: state.profile.accessToken,
     filtered:    !!state.matchup.filtered,
+    playoffs:    !!state.matchup.playoffs,
+    maxRound:    state.matchup.maxRound,
   }
 }
 

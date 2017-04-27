@@ -14,7 +14,7 @@ class Login extends Component {
     this.getProfileData = this.getProfileData.bind(this)
     this.next           = this.next.bind(this)
     this.state = {
-      step: 0,
+      step: 4,
       prompts: [
         LimIsSoAwesomeItsUnbelievable,
         Intro2,

@@ -11,6 +11,9 @@ class Playoff extends Component {
 
   componentDidMount() {
     this.props.setMiddle(this.props.players)
+    this.props.setBottom(this.props.players)
+    this.props.setTop(this.props.players)
+
   }
 
   render() { return (
@@ -51,7 +54,13 @@ function mapDispatchToProps(dispatch) {
     },
     setMiddle: function (players) {
       dispatch({type: 'list:middle', middle: players})
-    }
+    },
+    setTop: function (players) {
+      dispatch({type: 'list:top', top: players})
+    },
+    setBottom: function (players) {
+      dispatch({type: 'list:bottom', bottom: players})
+    },
   }
 }
 
