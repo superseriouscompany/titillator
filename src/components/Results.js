@@ -47,7 +47,11 @@ function mapStateToProps(state) {
     tiers[tiers.length-1].push(p)
   })
 
+  let top = players.slice(0, 10)
+
   return {
+    top:         top,
+    list:        players.slice(10),
     tiers:       tiers,
     accessToken: state.profile.accessToken,
   }

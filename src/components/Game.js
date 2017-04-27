@@ -5,7 +5,7 @@ import Results            from './Results'
 import Filter             from './Filter'
 import api                from '../api'
 
-const finalRound = 7
+const finalRound = 2
 
 class Game extends Component {
   constructor(props) {
@@ -44,7 +44,7 @@ class Game extends Component {
   }
 
   componentDidMount() {
-    if( this.props.round >= finalRound - 2 ) {
+    if( this.props.round >= finalRound - 1 ) {
       this.props.visitResults()
     }
   }
@@ -52,7 +52,7 @@ class Game extends Component {
   componentWillReceiveProps(props) {
     if( props.roundOver && !this.props.roundOver) {
       this.saveScores()
-      if( props.round >= finalRound - 2 ) {
+      if( props.round >= finalRound - 1 ) {
         window.ga('send', 'event', 'round', 'completedAll', 'default', props.round);
         this.props.visitResults()
         return

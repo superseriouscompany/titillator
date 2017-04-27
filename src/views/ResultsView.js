@@ -12,6 +12,33 @@ export default function(props) {
           Matches coming soon...standby
         </h2>
       }
+      <div>〰️〰️ Top Ten 〰️〰️</div>
+      { props.top.map((t, key) => (
+        <div key={key}>
+          { key === 0 ?
+            <span>🥇  </span>
+          : key === 1 ?
+            <span>🥈  </span>
+          : key === 2 ?
+            <span>🥉  </span>
+          :
+            <span>🎖️  </span>
+          }
+          {t.name}
+        </div>
+      ))}
+      <div>〰️〰️〰️〰️〰️〰️〰️〰️〰️</div>
+      { props.list.map((t, key) => (
+        <div key={key}>
+          { key === props.list.length - 1 ?
+            <span>💩  </span>
+          :
+            <span>{key + 11}.  </span>
+          }
+          {t.name}
+        </div>
+      ))}
+
       { props.tiers.map((t, key) => (
         <div className={`tier ${key % 2 ? 'even' : 'odd'}`} key={key}>
           <div className="place">
