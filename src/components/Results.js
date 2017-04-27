@@ -28,7 +28,7 @@ class Results extends Component {
       this.setState({
         matchCount: json.count,
         revealed: json.revealed,
-        noMatches: !!json.count,
+        noMatches: !json.count,
       })
     }).catch((err) => {
       if( window.location.href.match(/localhost/) ) {

@@ -24,7 +24,7 @@ class Game extends Component {
   }
 
   componentDidMount() {
-    if( this.props.round >= finalRound - 1 ) {
+    if( this.props.round >= finalRound - 1 || this.props.round >= this.props.players.length - 2) {
       this.props.visitResults()
     }
   }
