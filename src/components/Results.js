@@ -54,12 +54,17 @@ function mapStateToProps(state) {
 
   let top = players.slice(0, 10)
 
+  const otherOrientation = state.profile.orientation === 'M' ? 'female' : 'male'
+
   return {
-    top:         top,
-    list:        players.slice(10),
-    tiers:       tiers,
-    accessToken: state.profile.accessToken,
-    orientation: state.profile.orientation,
+    top:             top,
+    list:            players.slice(10),
+    tiers:           tiers,
+    accessToken:     state.profile.accessToken,
+    orientation:     state.profile.orientation,
+    men:             state.results.male,
+    women:           state.results.female,
+    hasOtherResults: !!state.results[otherOrientation].length,
   }
 }
 

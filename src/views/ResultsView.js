@@ -3,7 +3,11 @@ import React from 'react'
 export default function(props) {
   return (
     <div className="fullheight results-container">
-      <a onClick={props.changeOrientation}>Switch Teams</a>
+      { props.hasOtherResults ?
+        <div>Ya done.</div>
+      :
+        <a onClick={props.changeOrientation}>Switch Teams</a>
+      }
 
       { props.matchCount ?
         <h2>
@@ -14,32 +18,14 @@ export default function(props) {
           Matches coming soon...standby
         </h2>
       }
-      <div>〰️〰️ Top Ten 〰️〰️</div>
-      { props.top.map((t, key) => (
-        <div key={key}>
-          { key === 0 ?
-            <span>🥇  </span>
-          : key === 1 ?
-            <span>🥈  </span>
-          : key === 2 ?
-            <span>🥉  </span>
-          :
-            <span>🎖️  </span>
-          }
-          {t.name}
-        </div>
-      ))}
-      <div>〰️〰️〰️〰️〰️〰️〰️〰️〰️</div>
-      { props.list.map((t, key) => (
-        <div key={key}>
-          { key === props.list.length - 1 ?
-            <span>💩  </span>
-          :
-            <span>{key + 11}.  </span>
-          }
-          {t.name}
-        </div>
-      ))}
+
+      { props.men.length ?
+        <List list={props.men} />
+      : null }
+
+      { props.women.length ?
+        <List list={props.women} />
+      : null }
 
       { props.tiers.map((t, key) => (
         <div className={`tier ${key % 2 ? 'even' : 'odd'}`} key={key}>
@@ -70,6 +56,40 @@ export default function(props) {
               </div>
             ))}
           </div>
+        </div>
+      ))}
+
+    </div>
+  )
+}
+
+function List(props) {
+  return (
+    <div className="list">
+      <div>〰️〰️ Top Ten 〰️〰️</div>
+      { props.list.slice(0, 10).map((t, key) => (
+        <div key={key}>
+          { key === 0 ?
+            <span>🥇  </span>
+          : key === 1 ?
+            <span>🥈  </span>
+          : key === 2 ?
+            <span>🥉  </span>
+          :
+            <span>🎖️  </span>
+          }
+          {t.name}
+        </div>
+      ))}
+      <div>〰️〰️〰️〰️〰️〰️〰️〰️〰️</div>
+      { props.list.slice(10).map((t, key) => (
+        <div key={key}>
+          { key === props.list.length - 1 ?
+            <span>💩  </span>
+          :
+            <span>{key + 11}.  </span>
+          }
+          {t.name}
         </div>
       ))}
     </div>
