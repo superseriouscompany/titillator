@@ -32,7 +32,7 @@ class Game extends Component {
   componentWillReceiveProps(props) {
     if( props.roundOver && !this.props.roundOver) {
       this.saveScores()
-      if( props.round >= finalRound - 1 ) {
+      if( props.round >= finalRound - 1 || props.round >= this.props.players.length - 2) {
         window.ga('send', 'event', 'round', 'completedAll', 'default', props.round);
         this.props.visitResults()
         return
