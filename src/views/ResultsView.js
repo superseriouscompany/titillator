@@ -67,7 +67,7 @@ function List(props) {
       <div>{props.gender === 'f' ? '🍑' : '🍆'}〰️〰️〰️〰️〰️〰️〰️〰️{props.gender === 'f' ? '🍑' : '🍆'}</div>
       { props.list.slice(10).map((t, key) => (
         <div key={key}>
-          { key === props.list.length - 1 ?
+          { key === props.list.slice(10).length - 1 ?
             <span>💩  </span>
           :
             <span>{key + 11}.  </span>
