@@ -9,7 +9,6 @@ class Results extends Component {
     this.state = {
       matchCount: 0
     }
-    this.reveal = this.reveal.bind(this)
     this.onToken = this.onToken.bind(this)
   }
 
@@ -42,7 +41,6 @@ class Results extends Component {
     <ResultsView {...this.props}
       stripeKey={window.location.href.match(/localhost/) ? "pk_test_mmQIM1nxdtJu1AymtDN9nBCo" : "pk_live_qNUIQSZrsdKDscelF46J10pD"}
       matchCount={this.state.matchCount - (this.state.revealed || []).length}
-      reveal={this.reveal}
       match={this.state.match}
       onToken={this.onToken}
       revealed={this.state.revealed}

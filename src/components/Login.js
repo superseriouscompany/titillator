@@ -52,7 +52,7 @@ class Login extends Component {
   }
 
   render() { return (
-    <div className="fullheight">
+    <div className="fullheight loginpage">
       { this.state.step < this.state.prompts.length ?
         <div className="intro fullheight" onClick={this.next}>
             <img className="introImg" src={this.state.prompts[this.state.step]} alt="Message"/>
@@ -68,6 +68,9 @@ class Login extends Component {
           <div>
             <script type="in/Login"></script>
           </div>
+        </div>
+        <div className="main-mobile">
+          <h1>The LinkedIN api doesn't work on a phone. Use a desktop computer.</h1>
         </div>
       </div>
     </div>
