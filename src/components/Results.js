@@ -49,22 +49,6 @@ class Results extends Component {
       noMatches={this.state.noMatches}/>
   )}
 
-  reveal() {
-    api('/matches/reveal', {
-      method: 'POST',
-      accessToken: this.props.accessToken,
-    }).then((response) => {
-      return response.json()
-    }).then((json) => {
-      this.setState({ match: json.match })
-    }).catch((err) => {
-      if( window.location.href.match(/localhost/) ) {
-        alert(err.message || JSON.stringify(err))
-      }
-      console.error(err)
-    })
-  }
-
   onToken(token) {
     api('/matches/reveal', {
       method: 'POST',
@@ -73,7 +57,7 @@ class Results extends Component {
     }).then((response) => {
       return response.json()
     }).then((json) => {
-      this.setState({ match: json.match })
+      window.location.reload()
     }).catch((err) => {
       if( window.location.href.match(/localhost/) ) {
         alert(err.message || JSON.stringify(err))

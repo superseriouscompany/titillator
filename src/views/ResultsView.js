@@ -14,7 +14,7 @@ export default function(props) {
             description="💘 💘 💘 💘 💘 💘 💘 💘 💘 💘 💘 💘"
             panelLabel="🕵️ find out who"
             amount={1999}>
-            <button className="pay">Find you who liked you back</button>
+            <button className="pay">Find out who liked you back</button>
           </StripeCheckout>
         </h2>
       : props.noMatches ?
